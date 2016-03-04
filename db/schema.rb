@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304212303) do
+ActiveRecord::Schema.define(version: 20160304213216) do
 
   create_table "performances", force: :cascade do |t|
     t.integer  "rating"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160304212303) do
     t.integer  "venue_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "has_performed"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
