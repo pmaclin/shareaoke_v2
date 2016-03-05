@@ -22,11 +22,18 @@ class PerformancesController < ApplicationController
 
   # GET /performances/new
   def new
-    @performance = Performance.new
+    @performance = Performance.new(song_id: params[:song_id])
+    @performance.user = current_user
+    @performance.completed = false
+    @performance.save
+    redirect_to :root, notice: "Cool! You're selection is in. We'll see you on stage, Superstar!!"
   end
 
   # GET /performances/1/edit
   def edit
+    @performance.completed = true
+    @performance.save
+    redirect_to :performances, notice: "Nice job DJ! Now go to the next performer in the queue!"
   end
 
   # POST /performances

@@ -10,31 +10,43 @@
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Rating</dt>
-              <dd><%= @performance.rating %></dd>
+  <!--             <dt>Completed</dt>
+              <dd><%= @performance.completed %></dd> -->
+
+              <dt>Performer</dt>
+              <dd><%= @performance.user.stagename %></dd>
+              <dd><%= image_tag @performance.user.avatar, :height => '100px', :width => '100px', :class => 'img-circle' %></dd>
+
+              <dt>Song</dt>
+              <dd>"<%= @performance.song.title %>" originally performed by <%= @performance.song.artist %></dd>
+
+              <!-- <dt>Venue</dt> -->
+              <dd><%#= @performance.venue.name %></dd>
 
               <dt>Comment</dt>
               <dd><%= @performance.comment %></dd>
 
-              <dt>Completed</dt>
-              <dd><%= @performance.completed %></dd>
-
-              <dt>User</dt>
-              <dd><%= @performance.user %></dd>
-
-              <dt>Song</dt>
-              <dd><%= @performance.song %></dd>
-
-              <dt>Venue</dt>
-              <dd><%= @performance.venue %></dd>
-
+              <dt>Rating</dt>
+              <dd><%= @performance.rating %></dd>
             </dl>
+            <hr>
+
+
+
             <div class="btn-group btn-group-justified">
-              <%= link_to icon('chevron-left'), performances_path, class: "btn btn-primary" %>
+          <% if @performance.completed == false %>
+            <dt align="center">DJ - Click below when this performance is over!</dt>
+            <dd align="center"><%= link_to icon('stop'), edit_performance_path(), class: "btn btn-danger" %></dd>
+            <dt align="center">...or go back to the queue.</dt>
+            <dd align="center"><%= link_to icon('backward'), :performances, class: "btn btn-primary" %></dd>
+          <% else %>
+            <dt align="center">DJ - this performance is over!</dt>
+            <dd align="center"><%= link_to icon('backward'), :performances, class: "btn btn-danger" %></dd>
+          <% end %>
 
-              <%= link_to icon('edit'), edit_performance_path(@performance), class: "btn btn-warning" %>
+              <%#= link_to icon('edit'), edit_performance_path(@performance), class: "btn btn-warning" %>
 
-              <%= link_to icon('trash-o'), @performance, method: :delete, data: { confirm: "Do you really want to delete this performance?" }, class: "btn btn-danger" %>
+              <%#= link_to icon('trash-o'), @performance, method: :delete, data: { confirm: "Do you really want to delete this performance?" }, class: "btn btn-danger" %>
             </div>
           </div>
         </div>

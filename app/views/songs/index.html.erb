@@ -17,7 +17,7 @@
 
 <div class="row isotope-container">
 <% @songs.each do |song| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Song #<%= song.id %></h3>
@@ -41,7 +41,7 @@
 
         </dl>
         <div class="btn-group btn-group-justified">
-          <%= link_to icon('search-plus'), song, class: "btn btn-primary" %>
+          <%= link_to icon('play-circle'), song, class: "btn btn-primary" %>
 
           <%= link_to icon('edit'), edit_song_url(song), class: "btn btn-warning" %>
 

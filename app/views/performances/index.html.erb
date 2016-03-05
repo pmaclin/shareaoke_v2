@@ -1,19 +1,19 @@
 <div class="page-header">
   <h1>
     Performances
-    <%= link_to icon('plus'), new_performance_path, class: "btn btn-lg btn-success" %>
+    <%#= link_to icon('plus'), new_performance_path, class: "btn btn-lg btn-success" %>
   </h1>
 </div>
 
 <!-- Responsive, Isotope-based layout example -->
 
 <div class="row">
-  <div class="col-xs-12">
+<!--   <div class="col-xs-12">
     <input type="text" id="quicksearch" placeholder="Search Performances (start typing)" class="form-control">
-  </div>
+  </div> -->
 </div>
 
-<hr>
+<!-- <hr> -->
 
 <div class="row isotope-container">
 <% @performances.each do |performance| %>
@@ -24,31 +24,39 @@
       </div>
       <div class="panel-body">
         <dl>
-          <dt>Rating</dt>
-          <dd><%= performance.rating %></dd>
+        <% if performance.completed == false %>
+
+          <!-- <dt>Completed?: <%= performance.completed %></dt> -->
+          <!-- <dd><%= performance.completed %></dd> -->
+
+          <dt>Performer</dt>
+          <dd><%= performance.user.stagename %></dd>
+
+          <dd><%= image_tag performance.user.avatar, :height => '50px', :width => '50px', :class => 'img-square' %></dd>
+
+          <dt>Song</dt>
+          <dd>"<%= performance.song.title %>", originally performed by <%= performance.song.artist %></dd>
+
+          <dt>Venue</dt>
+          <dd><%= performance.venue %></dd>
 
           <dt>Comment</dt>
           <dd><%= performance.comment %></dd>
 
-          <dt>Completed</dt>
-          <dd><%= performance.completed %></dd>
-
-          <dt>User</dt>
-          <dd><%= performance.user %></dd>
-
-          <dt>Song</dt>
-          <dd><%= performance.song %></dd>
-
-          <dt>Venue</dt>
-          <dd><%= performance.venue %></dd>
+          <dt>Rating</dt>
+          <dd><%= performance.rating %></dd>
+        <% else %>
+        <dt align="center">This Performermance is complete.</dt>
+        <dd align="center"><%= performance.user.stagename %> has already performed!</dd>
+        <% end %>
 
         </dl>
         <div class="btn-group btn-group-justified">
           <%= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
 
-          <%= link_to icon('edit'), edit_performance_url(performance), class: "btn btn-warning" %>
+          <%#= link_to icon('edit'), edit_performance_url(performance), class: "btn btn-warning" %>
 
-          <%= link_to icon('trash-o'), performance, method: :delete, data: { confirm: "Do you really want to delete this performance?" }, class: "btn btn-danger" %>
+          <%#= link_to icon('trash-o'), performance, method: :delete, data: { confirm: "Do you really want to delete this performance?" }, class: "btn btn-danger" %>
         </div>
       </div>
     </div>

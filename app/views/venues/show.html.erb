@@ -26,6 +26,7 @@
               <dd><%= @venue.user %></dd> -->
             </dl>
           <% if current_user.present? %>
+          <hr>
             <div align="center">
               <strong>Check in at </strong> <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id] ), class: "btn btn-lg btn-success" %>
               <%#= link_to icon('chevron-left'), venues_path, class: "btn btn-primary" %>

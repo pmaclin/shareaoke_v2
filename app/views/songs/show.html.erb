@@ -22,16 +22,18 @@
               <dt>Lyrics</dt>
               <dd><%= @song.lyrics %></dd>
 
-              <dt>User</dt>
-              <dd><%= @song.user %></dd>
+              <!-- <dt>User</dt> -->
+              <dd><%#= @song.user %></dd>
 
             </dl>
-            <div class="btn-group btn-group-justified">
-              <%= link_to icon('chevron-left'), songs_path, class: "btn btn-primary" %>
+            <hr>
+            <div align="center">
+            <strong align="center">Confirm your requst for </strong><%= @song.title %> by <%= @song.artist %>
+              <%= link_to icon('thumbs-up'), new_performance_path(:song_id => params[:id]), class: "btn btn-success" %>
 
-              <%= link_to icon('edit'), edit_song_path(@song), class: "btn btn-warning" %>
+              <%#= link_to icon('edit'), edit_song_path(@song), class: "btn btn-warning" %>
 
-              <%= link_to icon('trash-o'), @song, method: :delete, data: { confirm: "Do you really want to delete this song?" }, class: "btn btn-danger" %>
+              <%#= link_to icon('trash-o'), @song, method: :delete, data: { confirm: "Do you really want to delete this song?" }, class: "btn btn-danger" %>
             </div>
           </div>
         </div>
