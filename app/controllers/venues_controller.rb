@@ -1,6 +1,14 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
+  before_action :stop_reg_user, only: [:update, :edit, :destroy, :new]
+
+  def stop_reg_user
+    if current_user.is_admin != true
+      redirect_to :back, notice: "Sorry. Only admin can do that."
+    end
+  end
+
   # GET /venues
   # GET /venues.json
   def index
