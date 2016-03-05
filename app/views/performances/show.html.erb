@@ -35,10 +35,16 @@
 
             <div class="btn-group btn-group-justified">
           <% if @performance.completed == false %>
-            <dt align="center">DJ - Click below when this performance is over!</dt>
-            <dd align="center"><%= link_to icon('stop'), edit_performance_path(), class: "btn btn-danger" %></dd>
-            <dt align="center">...or go back to the queue.</dt>
-            <dd align="center"><%= link_to icon('backward'), :performances, class: "btn btn-primary" %></dd>
+          <div class="container">
+            <div class="col-xs-6">
+              <dt align="center">End performance</dt>
+              <dd align="center"><%= link_to icon('stop'), edit_performance_path(), class: "btn btn-danger" %></dd>
+            </div>
+            <div class="col-xs-6">
+              <dt align="center">Back to the queue</dt>
+              <dd align="center"><%= link_to icon('backward'), :performances, class: "btn btn-primary" %></dd>
+            </div>
+          </div>
           <% else %>
             <dt align="center">DJ - this performance is over!</dt>
             <dd align="center"><%= link_to icon('backward'), :performances, class: "btn btn-danger" %></dd>

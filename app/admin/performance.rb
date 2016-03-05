@@ -3,7 +3,7 @@ ActiveAdmin.register Performance do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :rating, :comment, :completed
+permit_params :rating, :comment, :completed, :user_id, :venue_id, :song_id
 #
 # or
 #
