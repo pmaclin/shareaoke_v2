@@ -6,7 +6,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'seed_dump'
 gem 'devise'
-# gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', github: 'activeadmin'
 
 
 

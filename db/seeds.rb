@@ -31,3 +31,4 @@ Venue.create!([
   {name: "Trader Todd's", address: "3216 N. Sheffield Ave", city: "Chicago", description: "Festive karaoke bar with a beer garden, seafood-filled bar menu & tropical cocktails.", user_id: 1},
   {name: "Alice's Lounge", address: "3556 W. Belmont", city: "Chicago", description: "They have cider and even gluten free beer (New Grist).", user_id: 1}
 ])
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
