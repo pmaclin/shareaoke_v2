@@ -3,10 +3,11 @@ source 'https://rubygems.org'
 gem 'font-awesome-sass'
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem 'carrierwave'
 gem 'seed_dump'
 gem 'devise'
 # gem 'activeadmin', github: 'activeadmin'
-# gem 'carrierwave'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
