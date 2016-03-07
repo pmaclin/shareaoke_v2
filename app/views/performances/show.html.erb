@@ -36,12 +36,12 @@
             <div class="btn-group btn-group-justified">
           <% if @performance.completed == false %>
           <div class="container">
-            <div class="col-xs-6">
-              <dt align="center">End performance</dt>
+            <div class="col-xs-3">
+              <dt align="center">End</dt>
               <dd align="center"><%= link_to icon('stop'), edit_performance_path(), class: "btn btn-danger" %></dd>
             </div>
-            <div class="col-xs-6">
-              <dt align="center">Back to the queue</dt>
+            <div class="col-xs-3">
+              <dt align="center">Back</dt>
               <dd align="center"><%= link_to icon('backward'), :performances, class: "btn btn-primary" %></dd>
             </div>
           </div>

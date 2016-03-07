@@ -24,40 +24,47 @@
       </div>
       <div class="panel-body">
         <dl>
-        <% if performance.completed == false %>
+          <% if performance.completed == false %>
 
-          <!-- <dt>Completed?: <%= performance.completed %></dt> -->
-          <!-- <dd><%= performance.completed %></dd> -->
+            <!-- <dt>Completed?: <%= performance.completed %></dt> -->
+            <!-- <dd><%= performance.completed %></dd> -->
 
-          <dt>Performer</dt>
-          <dd><%= performance.user.stagename %></dd>
+            <dt>Performer</dt>
+            <dd><%= performance.user.stagename %></dd>
 
-          <dd><%= image_tag performance.user.avatar, :height => '50px', :width => '50px', :class => 'img-square' %></dd>
+            <dd><%= image_tag performance.user.avatar, :height => '50px', :width => '50px', :class => 'img-square' %></dd>
 
-          <dt>Song</dt>
-          <dd>"<%= performance.song.title %>", originally performed by <%= performance.song.artist %></dd>
+            <dt>Song</dt>
+            <dd>"<%= performance.song.title %>", originally performed by <%= performance.song.artist %></dd>
 
-          <dt>Venue</dt>
-          <dd><%= performance.venue %></dd>
+            <dt>Venue</dt>
+            <dd><%= performance.venue %></dd>
 
-          <dt>Comment</dt>
-          <dd><%= performance.comment %></dd>
+            <dt>Comment</dt>
+            <dd><%= performance.comment %></dd>
 
-          <dt>Rating</dt>
-          <dd><%= performance.rating %></dd>
-        <% else %>
-        <dt align="center">This Performance is complete!</dt>
-        <dd align="center"><%= performance.user.stagename %> has already performed!</dd>
-        <% end %>
-
+            <dt>Rating</dt>
+            <dd><%= performance.rating %></dd>
+            <div class="btn-group btn-group-justified">
+              <%= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
+          </div>
+          <% elsif performance.completed == true %>
+            <dt>This Performance is done!</dt>
+            <dd><%= performance.user.stagename %> has already performed!</dd>
+            <div class="btn-group btn-group-justified">
+              <%= link_to icon('remove'), '#', class: "btn btn-danger" %>
+            </div>
+          <% end %>
         </dl>
-        <div class="btn-group btn-group-justified">
-          <%= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
+      <%# elsif performance.completed == true %>
+<!--         <div class="btn-group btn-group-justified">
+          <%#= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
 
           <%#= link_to icon('edit'), edit_performance_url(performance), class: "btn btn-warning" %>
 
           <%#= link_to icon('trash-o'), performance, method: :delete, data: { confirm: "Do you really want to delete this performance?" }, class: "btn btn-danger" %>
-        </div>
+        </div> -->
+        <%# end %>
       </div>
     </div>
   </div>
