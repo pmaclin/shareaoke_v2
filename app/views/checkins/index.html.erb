@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Who's Checked In?
+    Youre Checkins
     <%= link_to icon('check'), '#', class: "btn btn-lg btn-success" %>
   </h1>
 </div>
@@ -29,14 +29,18 @@
 
           <dt>Venue</dt>
           <dd><%= checkin.venue.name %></dd>
+          <dt>Checked In</dt>
+          <dd><%= checkin.created_at %></dd>
+          <dt>Checked Out</dt>
+          <dd><%= checkin.updated_at %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
-          <%= link_to icon('search-plus'), checkin, class: "btn btn-primary" %>
+          <%#= link_to icon('search-plus'), checkin, class: "btn btn-primary" %>
 
-          <%= link_to icon('edit'), edit_checkin_url(checkin), class: "btn btn-warning" %>
+          <%= link_to icon('check'), edit_checkin_url(checkin), class: "btn btn-danger" %>
 
-          <%= link_to icon('trash-o'), checkin, method: :delete, data: { confirm: "Do you really want to delete this checkin?" }, class: "btn btn-danger" %>
+          <%#= link_to icon('trash-o'), checkin, method: :delete, data: { confirm: "Do you really want to delete this checkin?" }, class: "btn btn-danger" %>
         </div>
       </div>
     </div>

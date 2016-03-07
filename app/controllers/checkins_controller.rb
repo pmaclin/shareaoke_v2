@@ -9,6 +9,23 @@ class CheckinsController < InheritedResources::Base
     end
   end
 
+  # GET /checkins
+  # GET /checkins.json
+  def index
+    @checkins = Checkin.all
+
+    if current_user.is_dj != true
+
+        if current_user.present?
+            @checkins = current_user.checkins
+          else
+          @checkins = Checkin.all
+        end
+    else
+        @checkins = Checkin.all
+    end
+  end
+
   def new
     @checkin = Checkin.new( venue_id: params[:venue_id])
     @checkin.user = current_user

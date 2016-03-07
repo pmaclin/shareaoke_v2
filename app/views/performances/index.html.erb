@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Performances
+    Your Performances
     <%#= link_to icon('plus'), new_performance_path, class: "btn btn-lg btn-success" %>
   </h1>
 </div>
@@ -46,7 +46,7 @@
           <dt>Rating</dt>
           <dd><%= performance.rating %></dd>
         <% else %>
-        <dt align="center">This Performermance is complete.</dt>
+        <dt align="center">This Performance is complete!</dt>
         <dd align="center"><%= performance.user.stagename %> has already performed!</dd>
         <% end %>
 
