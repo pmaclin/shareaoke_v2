@@ -1,31 +1,63 @@
-<h2>Profile Page<%#= resource_name.to_s.humanize %></h2>
+<h2 align="center">Hey, <%= current_user.stagename %>!<%#= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<div class="container">
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
-    <%= f.input :password, autocomplete: "off", hint: "leave this blank if you don't want to change it", required: false %>
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+        <%= f.input :password, autocomplete: "off", hint: "leave this blank if you don't want to change it", required: false %>
 
 
-    <%= image_tag @user.avatar, :height => '150px', :width => '150px', :class => 'img-square' %>
-    <%= f.input :avatar, required: false, hint: "Select an image to upload." %>
-    <%= f.hidden_field :avatar_cache %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm any changes you've made", required: true %>
+        <%= image_tag @user.avatar, :height => '150px', :width => '150px', :class => 'img-square' %>
+        <%= f.input :avatar, required: false, hint: "Select an image to upload." %>
+        <%= f.hidden_field :avatar_cache %>
+        <%= f.input :password_confirmation, required: false %>
+        <%= f.input :current_password, hint: "we need your current password to confirm any changes you've made", required: true %>
 
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Update" %>
+      </div>
+    <% end %>
+    <hr>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+    <h4>Column #2's Content</h4>
+    <p>Checked In?:
+    <br>
+      <!-- Ask CHECKINS if there's a row where current_user.id exists and the checkin.is_checked_in value == "true". If that row exists than this user is currently checked in at that location. -->
+      <!-- Add a button that allows for the user to check out of that location... -->
+    <br>
+
+    <ol>
+      <p>You're favorite spots to perform</p>
+        <% @current_user.checkins.uniq.each do |checkin| %>
+          <li class="list-group-item">
+            <%= checkin.venue.name %> on <%= checkin.created_at %>
+          </li>
+        <% end %>
+    </ol>
+    <br>
+    <ol>
+      <p>You're Songs</p>
+        <% @current_user.songs.each do |song| %>
+          <li class="list-group-item">
+            <%= current_user.song.title %>
+          </li>
+        <% end %>
+    </ol>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+</div>
+<div class="container" align="center">
+  <div class="row">
+    <h3>Cancel my account</h3>
+    <p>"Hmm, wha?!?"" <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p><%= link_to "Back", :back %></p>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Hmm, wha? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

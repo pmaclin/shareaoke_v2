@@ -27,6 +27,8 @@
             </dl>
           <% if current_user.present? %>
           <hr>
+          <!-- Ask CHECKINS if there's a row where current_user.id exists and the checkin.is_checked_in value == "true". If that row exists than this user must not be able to checkin to any other location. -->
+          <!-- Add a button to Check Out of a location. This simply sets the checkin.is_checked_in value == "false" -->
             <div align="center">
               <strong>Check in at </strong> <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id] ), class: "btn btn-lg btn-success" %>
               <%#= link_to icon('chevron-left'), venues_path, class: "btn btn-primary" %>
