@@ -1,7 +1,7 @@
 class PerformancesController < ApplicationController
   before_action :set_performance, only: [:show, :edit, :update, :destroy]
 
-  before_action :stop_reg_user, only: [:index]
+  before_action :stop_reg_user, only: [:show]
 
   def stop_reg_user
     if current_user.is_dj != true
@@ -13,6 +13,17 @@ class PerformancesController < ApplicationController
   # GET /performances.json
   def index
     @performances = Performance.all
+
+    if current_user.is_dj != true
+
+        if current_user.present?
+            @performances = current_user.performances
+          else
+          @performances = Performance.all
+        end
+    else
+        @performances = Performance.all
+    end
   end
 
   # GET /performances/1
