@@ -26,15 +26,13 @@
     <% end %>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-    <h4>Column #2's Content</h4>
-    <p>Checked In?:
-    <br>
+    <!-- <br> -->
       <!-- Ask CHECKINS if there's a row where current_user.id exists and the checkin.is_checked_in value == "true". If that row exists than this user is currently checked in at that location. -->
       <!-- Add a button that allows for the user to check out of that location... -->
-    <br>
+    <!-- <br> -->
 
     <ol>
-      <p>You're favorite spots to perform</p>
+      <p>Previous CheckIns:  <span class="badge"><%= current_user.checkins.count %></span></p>
         <% @current_user.checkins.uniq.each do |checkin| %>
           <li class="list-group-item">
             <%= checkin.venue.name %> on <%= checkin.created_at %>
@@ -43,15 +41,25 @@
     </ol>
     <br>
     <ol>
-      <p>You're Songs</p>
-        <% @current_user.songs.each do |song| %>
+      <p>Your Performances:  <span class="badge">  <%= current_user.performances.count %></span></p>
+        <% @current_user.performances.each do |performance| %>
           <li class="list-group-item">
-            <%= current_user.song.title %>
+            <%= performance.song.title %> by <%= performance.song.artist %> @ <%#= performance.venue.name %>
           </li>
         <% end %>
     </ol>
+    <br>
+    <!-- A different way to present the same data -->
+    <ol>
+<!--       <p>Performances...  <span class="badge">  <%#= current_user.performances.count %></span></p>
+        <%# performances = Performance.where({ :user_id => current_user })  %>
+          <%# performances.each do |performance| %>
+        <li class="list-group-item">
+          <%#= performance.song.title %><small> by <%#= performance.song.artist %></small>
+        </li>
+        <%# end %> -->
+    </ol>
   </div>
-
 </div>
 <hr>
 <div class="container" align="center">

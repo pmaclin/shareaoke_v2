@@ -15,15 +15,16 @@ class PerformancesController < ApplicationController
     @performances = Performance.all
 
     if current_user.is_dj != true
-
-        if current_user.present?
-            @performances = current_user.performances
-          else
-          @performances = Performance.all
-        end
+      if current_user.present?
+        @performances = current_user.performances
+      else
+        @performances = Performance.all
+      end
     else
         @performances = Performance.all
     end
+
+
   end
 
   # GET /performances/1

@@ -5,4 +5,6 @@ class Performance < ActiveRecord::Base
 
   has_many :reviews
 
+  validates :song, :user, :presence => true
+
 end

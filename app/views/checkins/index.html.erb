@@ -23,18 +23,22 @@
         <h3 class="panel-title">Checkin #<%= checkin.id %></h3>
       </div>
       <div class="panel-body">
-        <dl>
-          <dt align="center"><%= checkin.user.stagename %></dt>
-          <dd align="center"><%= image_tag checkin.user.avatar, height: '50px', width: '50px', :class => 'img-circle' %></dd>
+        <% if checkin.is_checked_in == true %>
 
-          <dt>Venue</dt>
-          <dd><%= checkin.venue.name %></dd>
-          <dt>Checked In</dt>
-          <dd><%= checkin.created_at %></dd>
-          <dt>Checked Out</dt>
-          <dd><%= checkin.updated_at %></dd>
+          <dl>
+            <dt align="center"><%= checkin.user.stagename %></dt>
+            <dd align="center"><%= image_tag checkin.user.avatar, height: '50px', width: '50px', :class => 'img-circle' %></dd>
 
-        </dl>
+            <dt>Venue</dt>
+            <dd><%= checkin.venue.name %></dd>
+
+            <dt>Checked In</dt>
+            <dd><%= checkin.created_at %></dd>
+
+            <dt>Checked Out</dt>
+            <dd><%= checkin.updated_at %></dd>
+
+          </dl>
         <div class="btn-group btn-group-justified">
           <%#= link_to icon('search-plus'), checkin, class: "btn btn-primary" %>
 
@@ -42,6 +46,10 @@
 
           <%#= link_to icon('trash-o'), checkin, method: :delete, data: { confirm: "Do you really want to delete this checkin?" }, class: "btn btn-danger" %>
         </div>
+
+        <% elsif checkin.is_checked_in == false %>
+          <p><%= checkin.user.stagename %> checked out of <%= checkin.venue.name %> on <%= checkin.updated_at %>!</p> <p>Go to "Find a Karaoke Bar and select the bar you're currently in, or about to hit up.</p>
+        <% end %>
       </div>
     </div>
   </div>

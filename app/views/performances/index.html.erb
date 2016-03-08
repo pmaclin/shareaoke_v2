@@ -5,16 +5,6 @@
   </h1>
 </div>
 
-<!-- Responsive, Isotope-based layout example -->
-
-<!-- <div class="row"> -->
-<!--   <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Performances (start typing)" class="form-control">
-  </div> -->
-<!-- </div> -->
-
-<!-- <hr> -->
-
 <div class="row isotope-container">
 <% @performances.each do |performance| %>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 isotope-item">
@@ -37,8 +27,16 @@
             <dt>Song</dt>
             <dd>"<%= performance.song.title %>", originally performed by <%= performance.song.artist %></dd>
 
+
+            <div class="btn-group btn-group-justified">
+              <%= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
+          </div>
+          <% elsif performance.completed == true %>
+            <dt>This Performance is done!</dt>
+            <dd><%= performance.user.stagename %> sang <%= performance.song.title %></dd>
+
             <dt>Venue</dt>
-            <dd><%= performance.venue %></dd>
+            <dd><%#= performance.venue.name %></dd>
 
             <dt>Comment</dt>
             <dd><%= performance.comment %></dd>
@@ -46,25 +44,10 @@
             <dt>Rating</dt>
             <dd><%= performance.rating %></dd>
             <div class="btn-group btn-group-justified">
-              <%= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
-          </div>
-          <% elsif performance.completed == true %>
-            <dt>This Performance is done!</dt>
-            <dd><%= performance.user.stagename %> has already performed!</dd>
-            <div class="btn-group btn-group-justified">
               <%= link_to icon('remove'), '#', class: "btn btn-danger" %>
             </div>
           <% end %>
         </dl>
-      <%# elsif performance.completed == true %>
-<!--         <div class="btn-group btn-group-justified">
-          <%#= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
-
-          <%#= link_to icon('edit'), edit_performance_url(performance), class: "btn btn-warning" %>
-
-          <%#= link_to icon('trash-o'), performance, method: :delete, data: { confirm: "Do you really want to delete this performance?" }, class: "btn btn-danger" %>
-        </div> -->
-        <%# end %>
       </div>
     </div>
   </div>
