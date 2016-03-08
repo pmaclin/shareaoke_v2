@@ -96,6 +96,6 @@ class PerformancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def performance_params
-      params.require(:performance).permit(:rating, :comment, :completed, :user_id, :song_id, :venue_id)
+      params.require(:performance).permit(:rating, :comment, :completed, :user_id, :song_id )
     end
 end

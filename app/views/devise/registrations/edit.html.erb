@@ -44,7 +44,7 @@
       <p>Your Performances:  <span class="badge">  <%= current_user.performances.count %></span></p>
         <% @current_user.performances.each do |performance| %>
           <li class="list-group-item">
-            <%= performance.song.title %> by <%= performance.song.artist %> @ <%#= performance.venue.name %>
+            <%= performance.song.title %> by <%= performance.song.artist %> at <%#= checkin.venue.name %>
           </li>
         <% end %>
     </ol>

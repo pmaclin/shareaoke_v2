@@ -3,6 +3,7 @@ class Venue < ActiveRecord::Base
 
   # has_many :users
   has_many :checkins
+  has_many :performances
 
-  validates :name, :presence => true, :uniqueness => {:scope => :city}
+  # validates :name, :presence => true, :uniqueness => {:scope => :city}
 end

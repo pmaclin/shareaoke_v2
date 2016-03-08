@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :performances
   has_many :songs
+
   has_many :reviews
   # has_many :venues
   has_many :checkins
@@ -16,3 +17,6 @@ class User < ActiveRecord::Base
   belongs_to :venue
 
 end
+
+
+# user should have many songs
