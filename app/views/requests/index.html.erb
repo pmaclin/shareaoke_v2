@@ -1,54 +1,60 @@
 <div class="page-header">
   <h1>
-    Youre Checkins
-    <%= link_to icon('check'), new_checkin_path, class: "btn btn-lg btn-success" %>
+    Requests
+    <%= link_to icon('question'), new_request_path, class: "btn btn-lg btn-success" %>
   </h1>
-  <dt>DJ's Venue
-  <%#= current_user.venue.name %>: Venue.name goes here </dt>
 </div>
 
+<!-- Responsive, Isotope-based layout example -->
+
+<!-- <div class="row">
+  <div class="col-xs-12">
+    <input type="text" id="quicksearch" placeholder="Search Requests (start typing)" class="form-control">
+  </div>
+</div>
+
+<hr> -->
+
 <div class="row isotope-container">
-<% @checkins.each do |checkin| %>
+<% @requests.each do |request| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Checkin #<%= checkin.venue.id %></h3>
+        <h3 class="panel-title">Request #<%= request.id %></h3>
       </div>
       <div class="panel-body">
-        <%# if checkin.is_checked_in == true %>
-        <% if @checkins.present? %>
-
+        <% if request.available == true %>
           <dl>
-            <dt align="center"><%= checkin.user.stagename %></dt>
-            <dd align="center"><%= image_tag checkin.user.avatar, height: '50px', width: '50px', :class => 'img-circle' %></dd>
+<!--             <dt>Available</dt>
+            <dd><%= request.available %></dd> -->
+            <dt></dt>
+            <dd><%= image_tag request.user.avatar, height: '50px', width: '50px', :class => 'img-square' %></dd>
+
+            <!-- <dt>User</dt> -->
+            <dd><%= request.user.stagename %></dd>
+
+            <dt>Song</dt>
+            <dd#><%= request.song.title %> by <%= request.song.artist %></dd>
 
             <dt>Venue</dt>
-            <dd><%= checkin.venue.name %></dd>
-
-            <dt>Checked In</dt>
-            <dd><%= checkin.created_at %></dd>
-
-            <!-- <dt>Checked Out</dt>
-            <dd><%#= checkin.updated_at %></dd> -->
+            <dd><%= request.venue %></dd>
 
           </dl>
-        <div class="btn-group btn-group-justified">
-          <%#= link_to icon('search-plus'), checkin, class: "btn btn-primary" %>
+          <div class="btn-group btn-group-justified">
+            <%= link_to icon('search-plus'), request, class: "btn btn-primary" %>
 
-          <%= link_to icon('check'), edit_checkin_url(checkin), class: "btn btn-danger" %>
+            <%= link_to icon('forward'), edit_request_url(request), class: "btn btn-danger" %>
 
-          <%#= link_to icon('trash-o'), checkin, method: :delete, data: { confirm: "Do you really want to delete this checkin?" }, class: "btn btn-danger" %>
-        </div>
-
-<!--         <%# elsif @checkins.present?! %>
-        <p><%= checkin.user.stagename %> checked out of <%= checkin.venue.name %> on <%= checkin.updated_at %>!</p> <p>Go to "Find a Karaoke Bar and select the bar you're currently in, or about to hit up.</p> -->
+            <%#= link_to icon('trash-o'), request, method: :delete, data: { confirm: "Do you really want to delete this request?" }, class: "btn btn-danger" %>
+          </div>
+          <% elsif request.available =! true %>
+          <dl>FALSE!!</dl>
         <% end %>
       </div>
     </div>
   </div>
 <% end %>
 </div>
-
 
 <!-- JavaScript for Isotope layout and quicksearch -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>

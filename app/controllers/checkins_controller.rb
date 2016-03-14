@@ -1,7 +1,7 @@
 class CheckinsController < InheritedResources::Base
-  before_action :set_checkin, only: [:show, :edit, :update, :destroy]
+  before_action :set_checkin, only: [:show, :edit, :update, :destroy ]
 
-  before_action :stop_reg_user, only: [:show]
+  before_action :stop_reg_user, only: [:show, :index]
 
   def stop_reg_user
     if current_user.is_dj != true
@@ -9,29 +9,26 @@ class CheckinsController < InheritedResources::Base
     end
   end
 
-  # GET /checkins
-  # GET /checkins.json
   def index
-    @checkins = Checkin.all
-
-    if current_user.is_dj != true
-
-        if current_user.present?
-            @checkins = current_user.checkins
-          else
-          @checkins = Checkin.all
-        end
+    if current_user.present?
+          # @checkins = Checkin.where({ :venue_id => '2'})
+          # @checkins = Checkin.where({ :is_checked_in => true, :venue_id => 2 }) #How do we get the venue_id to show dynamically based on user's venue_id??
+          @checkins = Checkin.where({ :is_checked_in => true })
     else
         @checkins = Checkin.all
     end
   end
 
   def new
-    @checkin = Checkin.new( venue_id: params[:venue_id])
+    @checkin = Checkin.new( venue_id: params[:venue_id], user_id: (current_user.id))
     @checkin.user = current_user
     @checkin.is_checked_in = true # Sets checkin.is_checked_in to "true"
     @checkin.save
-    redirect_to :songs, notice: "Cool! You're all checked in. Time to pick a song and start warming up the pipes!!"
+    redirect_to :back, notice: "Cool! You're all checked in. Time to pick a song and start warming up the pipes!!"
+    # if @checkin.is_checked_in == true
+    #   redirect_to :back, notice: "You're already checked in here, friendo."
+    # else
+    # end
   end
 
   def edit

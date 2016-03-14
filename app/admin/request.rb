@@ -1,9 +1,9 @@
-ActiveAdmin.register Performance do
+ActiveAdmin.register Request do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :rating, :comment, :completed
+permit_params :available, :venue_id, :song_id, :user_id
 #
 # or
 #

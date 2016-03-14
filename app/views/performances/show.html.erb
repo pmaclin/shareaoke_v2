@@ -21,7 +21,7 @@
               <dd>"<%= @performance.song.title %>" originally performed by <%= @performance.song.artist %></dd>
 
               <!-- <dt>Venue</dt> -->
-              <!-- <dd><%= @performance.venue.name %></dd> -->
+              <!-- <dd><%#= @performance.venue.name %></dd> -->
 
               <dt>Comment</dt>
               <dd><%= @performance.comment %></dd>
@@ -30,7 +30,6 @@
               <dd><%= @performance.rating %></dd>
             </dl>
             <hr>
-
 
         <% if @performance.completed == false %>
               <div class="btn-group btn-group-justified">

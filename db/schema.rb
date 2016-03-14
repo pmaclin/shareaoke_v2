@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305043037) do
+ActiveRecord::Schema.define(version: 20160311192954) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -72,6 +72,19 @@ ActiveRecord::Schema.define(version: 20160305043037) do
   add_index "performances", ["user_id"], name: "index_performances_on_user_id"
   add_index "performances", ["venue_id"], name: "index_performances_on_venue_id"
 
+  create_table "requests", force: :cascade do |t|
+    t.boolean  "available"
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.integer  "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "requests", ["song_id"], name: "index_requests_on_song_id"
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id"
+  add_index "requests", ["venue_id"], name: "index_requests_on_venue_id"
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "performance_id"
@@ -111,7 +124,6 @@ ActiveRecord::Schema.define(version: 20160305043037) do
     t.boolean  "is_manager"
     t.boolean  "is_admin"
     t.boolean  "is_dj"
-    t.integer  "venue_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "has_performed"
@@ -126,11 +138,8 @@ ActiveRecord::Schema.define(version: 20160305043037) do
     t.string   "address"
     t.string   "city"
     t.text     "description"
-    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "venues", ["user_id"], name: "index_venues_on_user_id"
 
 end

@@ -30,7 +30,6 @@
       <!-- Ask CHECKINS if there's a row where current_user.id exists and the checkin.is_checked_in value == "true". If that row exists than this user is currently checked in at that location. -->
       <!-- Add a button that allows for the user to check out of that location... -->
     <!-- <br> -->
-
     <ol>
       <p>Previous CheckIns:  <span class="badge"><%= current_user.checkins.count %></span></p>
         <% @current_user.checkins.uniq.each do |checkin| %>
@@ -50,7 +49,7 @@
     </ol>
     <br>
     <!-- A different way to present the same data -->
-    <ol>
+    <!-- <ol> -->
 <!--       <p>Performances...  <span class="badge">  <%#= current_user.performances.count %></span></p>
         <%# performances = Performance.where({ :user_id => current_user })  %>
           <%# performances.each do |performance| %>
@@ -58,7 +57,7 @@
           <%#= performance.song.title %><small> by <%#= performance.song.artist %></small>
         </li>
         <%# end %> -->
-    </ol>
+    <!-- </ol> -->
   </div>
 </div>
 <hr>

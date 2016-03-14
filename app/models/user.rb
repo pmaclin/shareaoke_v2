@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:
@@ -8,13 +7,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :performances
+  has_many :checkins
+  has_many :requests
+  has_many :reviews
   has_many :songs
 
-  has_many :reviews
-  # has_many :venues
-  has_many :checkins
 
-  belongs_to :venue
 
 end
 

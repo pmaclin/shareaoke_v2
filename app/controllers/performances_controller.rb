@@ -23,8 +23,6 @@ class PerformancesController < ApplicationController
     else
         @performances = Performance.all
     end
-
-
   end
 
   # GET /performances/1
@@ -34,7 +32,7 @@ class PerformancesController < ApplicationController
 
   # GET /performances/new
   def new
-    @performance = Performance.new(song_id: params[:song_id])
+    @performance = Performance.new({ song_id: params[:song_id], venue_id: (current_user.venue_id) })
     @performance.user = current_user
     @performance.completed = false
     @performance.save
@@ -96,6 +94,6 @@ class PerformancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def performance_params
-      params.require(:performance).permit(:rating, :comment, :completed, :user_id, :song_id )
+      params.require(:performance).permit(:rating, :comment, :completed, :user_id, :song_id, :venue_id )
     end
 end

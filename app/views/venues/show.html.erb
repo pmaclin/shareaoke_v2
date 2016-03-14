@@ -4,15 +4,12 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Venue #<%= @venue.id %></h3>
+        <h3 class="panel-title"><%= @venue.name %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-sm-6" "col-md-6" "col-lg-6">
             <dl class="dl-horizontal">
-              <dt>Name</dt>
-              <dd><%= @venue.name %></dd>
-
               <dt>Address</dt>
               <dd><%= @venue.address %></dd>
 
@@ -22,27 +19,107 @@
               <dt>Description</dt>
               <dd><%= @venue.description %></dd>
 
-<!--               <dt>User</dt>
-              <dd><%= @venue.user %></dd> -->
+              <dd><%#= @venue.checkin.id %></dd>
             </dl>
-          <% if current_user.present? %>
-          <hr>
-          <!-- Ask CHECKINS if there's a row where current_user.id exists and the checkin.is_checked_in value == "true". If that row exists than this user must not be able to checkin to any other location. -->
-          <!-- Add a button to Check Out of a location. This simply sets the checkin.is_checked_in value == "false" -->
+<hr>
+    <% if current_user.present? %>
             <div align="center">
-              <strong>Check in at </strong> <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id] ), class: "btn btn-lg btn-success" %>
-              <%#= link_to icon('chevron-left'), venues_path, class: "btn btn-primary" %>
-
-              <%#= link_to icon('edit'), edit_venue_path(@venue), class: "btn btn-warning" %>
-
-              <%#= link_to icon('trash-o'), @venue, method: :delete, data: { confirm: "Do you really want to delete this venue?" }, class: "btn btn-danger" %>
+              <strong>Check in at </strong> <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id], :user_id => (current_user.id) ), class: "btn btn-lg btn-success" %>
             </div>
-          <% end %>
-          </div>
-        </div>
+    <% end %>
+
+
+          </div> <!-- end col-md-12 -->
+        </div> <!-- end panel row -->
+      </div> <!-- end panel body -->
+    </div> <!-- end panel panel-default -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Who's Checked In</h3>
       </div>
-    </div>
-  </div>
-</div>
+      <div class="panel-body">
+        <div class="row">
+          <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
+
+              <ul class="list-group" align="center">
+                <% @venue.checkins.each do |checkin| %>
+                  <%# if checkin.is_checked_in == true %>
+                    <li class="list-group-item">
+                      <dt align="left">
+                      <%= image_tag checkin.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
+                      </dt>
+                      <dt align="left">
+                      <%= checkin.user.stagename %> <%= checkin.created_at.strftime("checked in on %B %d at %I: %M %p") %>
+                      </dt>
+                    </li>
+                <%# end %>
+              </ul>
+
+          <% end %> <!-- end if -->
+          <!-- </div> --> <!-- end col -->
+        </div> <!-- end row -->
+      </div>  <!-- end panel body -->
+    </div> <!-- end panel panel-default -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Request Queue</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
+
+              <ul class="list-group" align="center">
+                <% @venue.requests.each do |request| %>
+                  <% if request.available == true %>
+                    <li class="list-group-item">
+                      <dt align="left">
+                      <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
+                      </dt>
+                      <dt align="left">
+                        <%= request.user.stagename %> <%= request.created_at.strftime("performed on %B %d at %I: %M %p") %>
+                      </dt>
+                    </li>
+                  <% end %> <!-- end if -->
+              </ul>
+          <% end %> <!-- end do -->
+          <!-- </div> --> <!-- end col -->
+        </div> <!-- end row -->
+      </div>  <!-- end panel body -->
+    </div> <!-- end panel panel-default -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Performance Queue</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
+
+              <ul class="list-group" align="center">
+                <% @venue.performances.each do |performance| %>
+                  <% if performance.completed == false %>
+                    <li class="list-group-item">
+                      <dt align="left">
+                        <%= image_tag performance.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
+                      </dt>
+                      <dt align="left">
+                      <%= performance.user.stagename %> <%= performance.created_at.strftime("performed on %B %d at %I: %M %p") %>
+                      </dt>
+                    </li>
+                  <% end %> <!-- end if -->
+              </ul>
+          <% end %> <!-- end do -->
+          <!-- </div> --> <!-- end col -->
+        </div> <!-- end row -->
+      </div>  <!-- end panel body -->
+    </div> <!-- end panel panel-default -->
+
+
+  </div> <!-- end div class column offset -->
+</div> <!-- end div row -->
 
 <!-- End responsive panel example -->
+
+

@@ -23,13 +23,19 @@
               <dd><%= @song.lyrics %></dd>
 
               <!-- <dt>User</dt> -->
-              <dd><%#= @song.user %></dd>
+              <dd><%#= current_user %></dd>
 
+              <!-- <dt>Venue</dt> -->
+              <dd><%#=  %></dd>
             </dl>
+
             <hr>
             <div align="center">
-            <strong align="center">Confirm your requst for </strong><%= @song.title %> by <%= @song.artist %>
-              <%= link_to icon('thumbs-up'), new_performance_path(:song_id => params[:id]), class: "btn btn-success" %>
+            <strong align="center">Confirm your request for </strong><%= @song.title %> by <%= @song.artist %>
+              <%= link_to icon('thumbs-up'), new_request_path(:song_id => params[:id], :user_id => (current_user.id), venue_id: '1'), class: "btn btn-success" %>
+
+<!--               <strong align="center">Confirm your request for </strong><%= @song.title %> by <%#= @song.artist %>
+              <%#= link_to icon('thumbs-up'), new_request_path(@song), class: "btn btn-success" %> -->
 
               <%#= link_to icon('edit'), edit_song_path(@song), class: "btn btn-warning" %>
 
