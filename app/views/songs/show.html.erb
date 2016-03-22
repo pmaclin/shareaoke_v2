@@ -4,7 +4,7 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Song #<%= @song.id %></h3>
+        <h3 class="panel-title">Your Selection: Song #<%= @song.id %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -22,17 +22,34 @@
               <dt>Lyrics</dt>
               <dd><%= @song.lyrics %></dd>
 
-              <!-- <dt>User</dt> -->
-              <dd><%#= current_user %></dd>
+              <dt>Checked In @ <%=  %></dt>
+         <!--      <dd><%= @song.lyrics %></dd> -->
+
+
+<!--               <dt>User</dt>
+              <dd><%= current_user.stagename %></dd> -->
 
               <!-- <dt>Venue</dt> -->
-              <dd><%#=  %></dd>
+              <dd><%#= request.venue.name %></dd>
             </dl>
 
             <hr>
+
+<!--             <div class="row">
+              <div class="col-xs-3">
+                <%#= form_tag "/requests" do %>
+                  <input name="available" type="hidden" class="form-control" value="true">
+                  <input name="song_id" type="hidden" class="form-control" value="<%#= params[:id] %>">
+                  <input name="venue_id" type="text" class="form-control" placeholder="Add Venue Id">
+                  <input name="user_id" type="hidden" value="<%= current_user.id %>">
+                  <input type="submit">
+                <%# end %>
+              </div>
+            </div> -->
+
             <div align="center">
             <strong align="center">Confirm your request for </strong><%= @song.title %> by <%= @song.artist %>
-              <%= link_to icon('thumbs-up'), new_request_path(:song_id => params[:id], :user_id => (current_user.id), venue_id: '1'), class: "btn btn-success" %>
+              <%= link_to icon('thumbs-up'), new_request_path(:song_id => params[:id], :user_id => (current_user.id), venue_id: ('user.checkin.venue_id') ), class: "btn btn-success" %>
 
 <!--               <strong align="center">Confirm your request for </strong><%= @song.title %> by <%#= @song.artist %>
               <%#= link_to icon('thumbs-up'), new_request_path(@song), class: "btn btn-success" %> -->
@@ -41,6 +58,7 @@
 
               <%#= link_to icon('trash-o'), @song, method: :delete, data: { confirm: "Do you really want to delete this song?" }, class: "btn btn-danger" %>
             </div>
+
           </div>
         </div>
       </div>

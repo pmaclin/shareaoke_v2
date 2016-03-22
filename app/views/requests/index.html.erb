@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Requests
-    <%= link_to icon('question'), new_request_path, class: "btn btn-lg btn-success" %>
+    <%= link_to icon('question'), '#', class: "btn btn-lg btn-success" %>
   </h1>
 </div>
 
@@ -16,45 +16,45 @@
 <hr> -->
 
 <div class="row isotope-container">
-<% @requests.each do |request| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Request #<%= request.id %></h3>
-      </div>
-      <div class="panel-body">
-        <% if request.available == true %>
-          <dl>
-<!--             <dt>Available</dt>
-            <dd><%= request.available %></dd> -->
-            <dt></dt>
-            <dd><%= image_tag request.user.avatar, height: '50px', width: '50px', :class => 'img-square' %></dd>
+  <% @requests.each do |request| %>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Request #<%= request.id %></h3>
+        </div>
+            <div class="panel-body">
 
-            <!-- <dt>User</dt> -->
-            <dd><%= request.user.stagename %></dd>
+                <dl>
+                  <dt></dt>
+                  <dd><%= image_tag request.user.avatar, height: '50px', width: '50px', :class => 'img-square' %></dd>
 
-            <dt>Song</dt>
-            <dd#><%= request.song.title %> by <%= request.song.artist %></dd>
+                  <dd><%= request.user.stagename %></dd>
 
-            <dt>Venue</dt>
-            <dd><%= request.venue %></dd>
+                  <dt>Song</dt>
+                  <dd#><%= request.song.title %> by <%= request.song.artist %></dd>
 
-          </dl>
-          <div class="btn-group btn-group-justified">
-            <%= link_to icon('search-plus'), request, class: "btn btn-primary" %>
+                  <dt>Venue</dt>
+                  <dd><%#= current_user.venue.name %></dd>
+                </dl>
 
-            <%= link_to icon('forward'), edit_request_url(request), class: "btn btn-danger" %>
+          <% if current_user.is_dj == true %>
 
-            <%#= link_to icon('trash-o'), request, method: :delete, data: { confirm: "Do you really want to delete this request?" }, class: "btn btn-danger" %>
-          </div>
-          <% elsif request.available =! true %>
-          <dl>FALSE!!</dl>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
-</div>
+                  <div class="btn-group btn-group-justified">
+                    <%= link_to icon('search-plus'), request, class: "btn btn-primary" %>
+
+                    <%= link_to icon('forward'), edit_request_url(request), class: "btn btn-danger" %>
+
+                    <%#= link_to icon('trash-o'), request, method: :delete, data: { confirm: "Do you really want to delete this request?" }, class: "btn btn-danger" %>
+                  </div>
+          <% end %>
+            </div> <!-- panel body -->
+
+      </div> <!-- panel panel default -->
+
+     </div> <!-- div column -->
+     <% end %> <!-- end each do loop -->
+</div> <!-- div row isotope container -->
+
 
 <!-- JavaScript for Isotope layout and quicksearch -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>

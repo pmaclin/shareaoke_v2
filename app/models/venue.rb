@@ -8,5 +8,7 @@ class Venue < ActiveRecord::Base
   validates :city, :presence => true
 
 
+
+
   # validates :name, :presence => true, :uniqueness => {:scope => :city}
 end

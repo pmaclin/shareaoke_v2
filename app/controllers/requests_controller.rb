@@ -1,7 +1,7 @@
 class RequestsController < InheritedResources::Base
   before_action :set_request, only: [:show, :edit, :update, :destroy ]
 
-  before_action :stop_reg_user, only: [:show, :index]
+  before_action :stop_reg_user, only: [:show, :destroy]
 
   def stop_reg_user
     if current_user.is_dj != true
@@ -11,20 +11,19 @@ class RequestsController < InheritedResources::Base
 
   def index
     if current_user.present?
-          # @checkins = Checkin.where({ :venue_id => '2'})
-          # @checkins = Checkin.where({ :is_checked_in => true, :venue_id => 2 }) #How do we get the venue_id to show dynamically based on user's venue_id??
-          @requests = Request.where({ :available => true })
+        @requests = Request.where( ({ :available => true }) && ({ user_id: current_user.id }) )
     else
         @requests = Request.all
     end
   end
 
   def new
-    @request = Request.new( :song_id => params[:song_id], user_id: (current_user.id), venue_id: params[:venue_id] )
+    @request = Request.new( :song_id => params[:song_id], user_id: (current_user.id), venue_id: ('user.checkin.venue.id') )
     @request.user = current_user
     @request.available = true
     # @request.venue_id = params[:venue_id]
-    # @request.venue_id = 'request.user.venue.id'
+    # @request.venue_id = 'current_user.checkin.venue.id'
+    # @request.venue_id = current_user.checkin.venue.id
     @request.save
     redirect_to :back, notice: "Cool! You're request is in. The DJ will let you know when you're up!"
   end
