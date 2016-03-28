@@ -19,16 +19,28 @@
               <dt>Description</dt>
               <dd><%= @venue.description %></dd>
 
-              <dd><%#= @venue.checkin.id %></dd>
+              <!-- <dt>There are</dt> -->
+              <hr>
+              <dt><h1><%= @venue.checkins.count %></h1></dt> <dd>performers have checked in @ <%= @venue.name %> tonight!</dd>
             </dl>
 <hr>
     <% if current_user.present? %>
-            <div align="center">
-              <strong>Check in at </strong> <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id], :user_id => (current_user.id) ), class: "btn btn-lg btn-success" %>
+            <div class="row">
+
+                <% if current_user.is_checked_in == true %>
+                          <%= form_tag("/checkins/#{params[:id]}/check_out", method:"post") do %>
+                            <div align="center">
+                              <label for="Checkout" >Ready to Checkout?: </label>
+                                    <input align="right" type="submit" value="Checkout">
+                            </div>
+                          <% end %>
+                <% else %>
+                     <div class="col-lg-6" align="center">
+                          <strong>Check In at</strong> <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id], :user_id => (current_user.id) ), class: "btn btn-lg btn-success" %>
+                    </div>
+              <% end %>
             </div>
     <% end %>
-
-
           </div> <!-- end col-md-12 -->
         </div> <!-- end panel row -->
       </div> <!-- end panel body -->
@@ -39,29 +51,41 @@
         <h3 class="panel-title">Who's Checked In</h3>
       </div>
       <div class="panel-body">
-        <div class="row">
-          <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
+      <% @venue.checkins.each do |checkin| %>
+        <% if current_user.is_checked_in == false %>
 
-              <ul class="list-group" align="center">
-                <% @venue.checkins.each do |checkin| %>
-                  <%# if checkin.is_checked_in == true %>
-                    <li class="list-group-item">
-                      <dt align="left">
-                      <%= image_tag checkin.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
-                      </dt>
-                      <dt align="left">
-                      <%= checkin.user.stagename %> <%= checkin.created_at.strftime("checked in on %B %d at %I: %M %p") %>
-                      </dt>
-                    </li>
-                <%# end %>
-              </ul>
+          <div class="row">
+            <ul class="list-group" align="center">
+              <li class="list-group-item">
+                <dt align="left">
+                <%= checkin.user.stagename %> has checked out.
+                </dt>
+              </li>
+            </ul>
+          </div> <!-- end div row -->
 
-          <% end %> <!-- end if -->
-          <!-- </div> --> <!-- end col -->
-        </div> <!-- end row -->
+        <% else %>
+
+          <div class="row">
+            <ul class="list-group" align="center">
+              <li class="list-group-item">
+                <dt align="left">
+                <%= image_tag checkin.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
+                </dt>
+                <dt align="left">
+                <%= checkin.user.stagename %> <%= checkin.created_at.strftime("checked in on %B %d at %I: %M %p") %>
+                </dt>
+              </li>
+            </ul>
+          </div> <!-- end div row -->
+
+        <% end %> <!-- end if statement  -->
+      <% end %>  <!-- end do statement -->
+
       </div>  <!-- end panel body -->
     </div> <!-- end panel panel-default -->
 
+<!-- REQUEST QUEUE -->
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Request Queue</h3>
@@ -69,26 +93,41 @@
       <div class="panel-body">
         <div class="row">
           <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
-
               <ul class="list-group" align="center">
-                <% @venue.requests.each do |request| %>
-                  <% if request.available == true %>
+                <% current_user.requests.each do |request| %>
+                  <% if request.available == false %>
                     <li class="list-group-item">
                       <dt align="left">
                       <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
                       </dt>
                       <dt align="left">
-                        <%= request.user.stagename %> <%= request.created_at.strftime("performed on %B %d at %I: %M %p") %>
+                        <%= request.user.stagename %> requested <%= request.song.try(:title) %>
                       </dt>
                     </li>
                   <% end %> <!-- end if -->
               </ul>
-          <% end %> <!-- end do -->
+                <% end %> <!-- end do -->
           <!-- </div> --> <!-- end col -->
         </div> <!-- end row -->
       </div>  <!-- end panel body -->
     </div> <!-- end panel panel-default -->
 
+<!--               <dt>Requests</dt>
+              <%# @checkin.requests.each do |request| %>
+                <li>
+                  <dd><%#= song.title %></dd>
+                  <div class="inline-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </li>
+              <%# end %> -->
+
+
+<!-- PERFORMANCE QUEUE -->
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Performance Queue</h3>

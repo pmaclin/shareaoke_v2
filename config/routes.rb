@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  # Edits current user's checkin so that they're checkout out per the Checkin/check_out action
+  post("checkins/:id/check_out", { :controller => "checkins", :action => "check_out"})
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

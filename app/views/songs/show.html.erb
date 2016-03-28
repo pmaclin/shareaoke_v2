@@ -22,34 +22,11 @@
               <dt>Lyrics</dt>
               <dd><%= @song.lyrics %></dd>
 
-              <dt>Checked In @ <%=  %></dt>
-         <!--      <dd><%= @song.lyrics %></dd> -->
-
-
-<!--               <dt>User</dt>
-              <dd><%= current_user.stagename %></dd> -->
-
-              <!-- <dt>Venue</dt> -->
-              <dd><%#= request.venue.name %></dd>
-            </dl>
-
             <hr>
-
-<!--             <div class="row">
-              <div class="col-xs-3">
-                <%#= form_tag "/requests" do %>
-                  <input name="available" type="hidden" class="form-control" value="true">
-                  <input name="song_id" type="hidden" class="form-control" value="<%#= params[:id] %>">
-                  <input name="venue_id" type="text" class="form-control" placeholder="Add Venue Id">
-                  <input name="user_id" type="hidden" value="<%= current_user.id %>">
-                  <input type="submit">
-                <%# end %>
-              </div>
-            </div> -->
 
             <div align="center">
             <strong align="center">Confirm your request for </strong><%= @song.title %> by <%= @song.artist %>
-              <%= link_to icon('thumbs-up'), new_request_path(:song_id => params[:id], :user_id => (current_user.id), venue_id: ('user.checkin.venue_id') ), class: "btn btn-success" %>
+              <%= link_to icon('thumbs-up'), new_request_path(:song_id => params[:id], :user_id => (current_user.id), :venue_id => (current_user.checkin.venue_id) ), class: "btn btn-success" %>
 
 <!--               <strong align="center">Confirm your request for </strong><%= @song.title %> by <%#= @song.artist %>
               <%#= link_to icon('thumbs-up'), new_request_path(@song), class: "btn btn-success" %> -->

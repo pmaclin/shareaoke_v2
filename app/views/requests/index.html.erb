@@ -6,13 +6,11 @@
 </div>
 
 <!-- Responsive, Isotope-based layout example -->
-
 <!-- <div class="row">
   <div class="col-xs-12">
     <input type="text" id="quicksearch" placeholder="Search Requests (start typing)" class="form-control">
   </div>
 </div>
-
 <hr> -->
 
 <div class="row isotope-container">
@@ -34,11 +32,10 @@
                   <dd#><%= request.song.title %> by <%= request.song.artist %></dd>
 
                   <dt>Venue</dt>
-                  <dd><%#= current_user.venue.name %></dd>
+                  <dd><%#= current_user.checkin.venue.name %></dd>
                 </dl>
 
           <% if current_user.is_dj == true %>
-
                   <div class="btn-group btn-group-justified">
                     <%= link_to icon('search-plus'), request, class: "btn btn-primary" %>
 

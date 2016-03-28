@@ -12,8 +12,13 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :songs
 
+  has_many :venues, :through => :checkins
 
 
+def checkin
+  checkins.last
+  #Checkin.find_by( :user_id => current_us)
+end
 
 
 end

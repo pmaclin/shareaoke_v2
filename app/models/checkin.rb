@@ -2,6 +2,8 @@ class Checkin < ActiveRecord::Base
   belongs_to :user
   belongs_to :venue
 
+  has_many :requests
+
   validates :user, :presence => true
   validates :venue, :presence => true
 end

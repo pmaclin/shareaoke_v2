@@ -11,21 +11,18 @@ class RequestsController < InheritedResources::Base
 
   def index
     if current_user.present?
-        @requests = Request.where( ({ :available => true }) && ({ user_id: current_user.id }) )
+        @requests = current_user.requests
     else
         @requests = Request.all
     end
   end
 
   def new
-    @request = Request.new( :song_id => params[:song_id], user_id: (current_user.id), venue_id: ('user.checkin.venue.id') )
+    @request = Request.new( :song_id => params[:song_id], user_id: (current_user.id), venue_id: (current_user.checkin.venue_id) )
     @request.user = current_user
     @request.available = true
-    # @request.venue_id = params[:venue_id]
-    # @request.venue_id = 'current_user.checkin.venue.id'
-    # @request.venue_id = current_user.checkin.venue.id
     @request.save
-    redirect_to :back, notice: "Cool! You're request is in. The DJ will let you know when you're up!"
+    redirect_to :venues, notice: "Cool! You're request is in. The DJ will let you know when you're up!"
   end
 
   def create
@@ -49,6 +46,7 @@ class RequestsController < InheritedResources::Base
   end
 
   def show
+
   end
 
   private

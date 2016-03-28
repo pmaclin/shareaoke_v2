@@ -40,6 +40,15 @@
     </ol>
     <br>
     <ol>
+      <p>Your Requests:  <span class="badge">  <%= current_user.requests.count %></span></p>
+        <% @current_user.requests.each do |request| %>
+          <li class="list-group-item">
+            <%= request.song.title %> by <%= request.song.artist %>
+          </li>
+        <% end %>
+    </ol>
+    <br>
+    <ol>
       <p>Your Performances:  <span class="badge">  <%= current_user.performances.count %></span></p>
         <% @current_user.performances.each do |performance| %>
           <li class="list-group-item">
