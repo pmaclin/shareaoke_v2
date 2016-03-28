@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
 
 def checkin
   checkins.last
-  #Checkin.find_by( :user_id => current_us)
 end
 
 

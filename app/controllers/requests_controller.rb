@@ -22,7 +22,7 @@ class RequestsController < InheritedResources::Base
     @request.user = current_user
     @request.available = true
     @request.save
-    redirect_to :venues, notice: "Cool! You're request is in. The DJ will let you know when you're up!"
+    redirect_to "/", notice: "Cool! You're request is in. The DJ will let you know when you're up!"
   end
 
   def create

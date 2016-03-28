@@ -1,7 +1,7 @@
 <!-- Responsive panel example-->
 
 <div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-12 col-lg-offset-0 col-lg-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= @venue.name %></h3>
@@ -21,7 +21,7 @@
 
               <!-- <dt>There are</dt> -->
               <hr>
-              <dt><h1><%= @venue.checkins.count %></h1></dt> <dd>performers have checked in @ <%= @venue.name %> tonight!</dd>
+              <dd><h1 align="center"><%= @venue.checkins.count %></h1>performers have checked in @ <%= @venue.name %> tonight!</dd>
             </dl>
 <hr>
     <% if current_user.present? %>
@@ -35,13 +35,29 @@
                             </div>
                           <% end %>
                 <% else %>
-                     <div class="col-lg-6" align="center">
-                          <strong>Check In at</strong> <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id], :user_id => (current_user.id) ), class: "btn btn-lg btn-success" %>
+                     <div class="col-lg-12" align="center">
+                          <dt>Check In at <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id], :user_id => (current_user.id) ), class: "btn btn-lg btn-success" %></dt>
                     </div>
               <% end %>
             </div>
     <% end %>
           </div> <!-- end col-md-12 -->
+          <div class="col-sm-6" "col-md-6" "col-lg-6">
+            <dt align="center"><%= @venue.name %></dt>
+              <div class="main-image-container" align="center">
+                <img class="main-image" src="http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/29/7f/297f4ef60d41d6952b4d933de47c9bff.jpg?itok=jhABVE2M" alt="Image from the Venue">
+              </div>
+                <div align=center>
+                  <span><a href="#">My Rating</a></span>
+                    <div class="inline-rating">
+                      <i class="fa fa-star fa-3x"></i>
+                      <i class="fa fa-star fa-3x"></i>
+                      <i class="fa fa-star fa-3x"></i>
+                      <i class="fa fa-star fa-3x"></i>
+                      <i class="fa fa-star fa-3x"></i>
+                    </div>
+                </div>
+          </div>
         </div> <!-- end panel row -->
       </div> <!-- end panel body -->
     </div> <!-- end panel panel-default -->
@@ -94,8 +110,8 @@
         <div class="row">
           <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
               <ul class="list-group" align="center">
-                <% current_user.requests.each do |request| %>
-                  <% if request.available == false %>
+                <% @venue.requests.each do |request| %>
+                  <%# if request.venue_id == current_user.checkin.venue_id %>
                     <li class="list-group-item">
                       <dt align="left">
                       <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
@@ -104,7 +120,7 @@
                         <%= request.user.stagename %> requested <%= request.song.try(:title) %>
                       </dt>
                     </li>
-                  <% end %> <!-- end if -->
+                  <%# end %> <!-- end if -->
               </ul>
                 <% end %> <!-- end do -->
           <!-- </div> --> <!-- end col -->
