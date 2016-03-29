@@ -12,31 +12,30 @@ class PerformancesController < ApplicationController
   # GET /performances
   # GET /performances.json
   def index
-    @performances = Performance.all
+    @performances = Performance.where( :venue_id => (current_user.checkin.venue_id))
 
-    if current_user.is_dj != true
-      if current_user.present?
-        @performances = current_user.performances
-      else
-        @performances = Performance.all
-      end
-    else
-        @performances = Performance.all
-    end
+    # if current_user.is_dj != true
+    #   if current_user.present?
+    #     @performances = current_user.performances
+    #   else
+    #     @performances = Performance.all
+    #   end
+    # else
+    #     @performances = Performance.all
+    # end
   end
 
-  # GET /performances/1
+  # GET /performance
   # GET /performances/1.json
   def show
   end
 
   # GET /performances/new
   def new
-    @performance = Performance.new({ song_id: params[:song_id], venue_id: (current_user.venue_id) })
-    @performance.user = current_user
+    @performance = Performance.new(:user_id => params[:user_id], :song_id => params[:song_id], :venue_id => params[:venue_id] ) #stack overflow...assigning attributes issue
     @performance.completed = false
     @performance.save
-    redirect_to :root, notice: "Cool! You're selection is in. We'll see you on stage, Superstar!!"
+    redirect_to :performances, notice: "Well Done DJ! Go ahead and select the next performer in the queue."
   end
 
   # GET /performances/1/edit
@@ -94,6 +93,6 @@ class PerformancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def performance_params
-      params.require(:performance).permit(:rating, :comment, :completed, :user_id, :song_id, :venue_id )
+      params.require(:performance).permit( :rating, :completed, :comment, :song_id, :venue_id )
     end
 end

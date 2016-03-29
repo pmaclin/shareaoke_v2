@@ -5,9 +5,10 @@ class Performance < ActiveRecord::Base
 
   has_many :reviews
 
-  validates :song, :presence => true
   validates :user, :presence => true
+  validates :song, :presence => true
   validates :venue, :presence => true
+
 
 
 end

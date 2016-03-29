@@ -108,39 +108,26 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
               <ul class="list-group" align="center">
                 <% @venue.requests.each do |request| %>
-                  <%# if request.venue_id == current_user.checkin.venue_id %>
+
                     <li class="list-group-item">
                       <dt align="left">
-                      <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
+                        <%= request.id %>
+                      </dt>
+                      <dt align="left">
+                        <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
                       </dt>
                       <dt align="left">
                         <%= request.user.stagename %> requested <%= request.song.try(:title) %> by <%= request.song.try(:artist) %>
                       </dt>
                     </li>
-                  <%# end %> <!-- end if -->
               </ul>
                 <% end %> <!-- end do -->
           <!-- </div> --> <!-- end col -->
         </div> <!-- end row -->
       </div>  <!-- end panel body -->
     </div> <!-- end panel panel-default -->
-
-<!--               <dt>Requests</dt>
-              <%# @checkin.requests.each do |request| %>
-                <li>
-                  <dd><%#= song.title %></dd>
-                  <div class="inline-rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
-                </li>
-              <%# end %> -->
 
 
 <!-- PERFORMANCE QUEUE -->

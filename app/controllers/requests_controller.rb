@@ -10,11 +10,7 @@ class RequestsController < InheritedResources::Base
   end
 
   def index
-    if current_user.present?
-        @requests = current_user.requests
-    else
-        @requests = Request.all
-    end
+    @requests = Request.where( :venue_id => (current_user.checkin.venue_id))
   end
 
   def new

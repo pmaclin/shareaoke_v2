@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
 
   has_many :venues, :through => :checkins
 
-
 def checkin
   checkins.last
 end

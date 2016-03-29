@@ -14,7 +14,7 @@
       </div>
       <div class="panel-body">
         <dl>
-          <% if performance.completed == false %>
+          <%# if @performance.completed == false %>
 
             <!-- <dt>Completed?: <%= performance.completed %></dt> -->
             <!-- <dd><%= performance.completed %></dd> -->
@@ -31,7 +31,7 @@
             <div class="btn-group btn-group-justified">
               <%= link_to icon('search-plus'), performance, class: "btn btn-primary" %>
           </div>
-          <% elsif performance.completed == true %>
+          <%# elsif performance.completed == false %>
             <dt>This Performance is done!</dt>
             <dd><%= performance.user.stagename %> sang <%= performance.song.title %></dd>
 
@@ -46,7 +46,7 @@
             <div class="btn-group btn-group-justified">
               <%= link_to icon('remove'), '#', class: "btn btn-danger" %>
             </div>
-          <% end %>
+          <%# end %>
         </dl>
       </div>
     </div>
