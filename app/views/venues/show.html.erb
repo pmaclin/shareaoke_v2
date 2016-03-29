@@ -45,16 +45,16 @@
           <div class="col-sm-6" "col-md-6" "col-lg-6">
             <dt align="center"><%= @venue.name %></dt>
               <div class="main-image-container" align="center">
-                <img class="main-image" src="http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/29/7f/297f4ef60d41d6952b4d933de47c9bff.jpg?itok=jhABVE2M" alt="Image from the Venue">
+                <%= image_tag "Karaoke.jpg", :height => '250px', :width => '250px', :class => 'img-circle', :alt => 'Image from the Venue' %>
               </div>
                 <div align=center>
-                  <span><a href="#">My Rating</a></span>
+                  <span><a href="#">Rate your experience @ <%= @venue.name %></a></span>
                     <div class="inline-rating">
-                      <i class="fa fa-star fa-3x"></i>
-                      <i class="fa fa-star fa-3x"></i>
-                      <i class="fa fa-star fa-3x"></i>
-                      <i class="fa fa-star fa-3x"></i>
-                      <i class="fa fa-star fa-3x"></i>
+                      <i class="fa fa-star fa-2x"></i>
+                      <i class="fa fa-star fa-2x"></i>
+                      <i class="fa fa-star fa-2x"></i>
+                      <i class="fa fa-star fa-2x"></i>
+                      <i class="fa fa-star fa-2x"></i>
                     </div>
                 </div>
           </div>
@@ -117,7 +117,7 @@
                       <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
                       </dt>
                       <dt align="left">
-                        <%= request.user.stagename %> requested <%= request.song.try(:title) %>
+                        <%= request.user.stagename %> requested <%= request.song.try(:title) %> by <%= request.song.try(:artist) %>
                       </dt>
                     </li>
                   <%# end %> <!-- end if -->

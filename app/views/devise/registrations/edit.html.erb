@@ -1,4 +1,4 @@
-<h2 align="center">Hey, <%= current_user.stagename %>!<%#= resource_name.to_s.humanize %></h2>
+<h2 align="center">Sup, <%= current_user.stagename %>?!<%#= resource_name.to_s.humanize %></h2>
 
 <div class="container">
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -10,14 +10,15 @@
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
-        <%= f.input :password, autocomplete: "off", hint: "leave this blank if you don't want to change it", required: false %>
+        <%#= f.input :password, autocomplete: "off", hint: "leave this blank if you don't want to change it", required: false %>
 
 
         <%= image_tag @user.avatar, :height => '150px', :width => '150px', :class => 'img-square' %>
+        <i class="fa fa-camera-retro fa-2x"></i>
         <%= f.input :avatar, required: false, hint: "Select an image to upload." %>
         <%= f.hidden_field :avatar_cache %>
-        <%= f.input :password_confirmation, required: false %>
-        <%= f.input :current_password, hint: "we need your current password to confirm any changes you've made", required: true %>
+        <%#= f.input :password_confirmation, required: false %>
+        <%= f.input :current_password, hint: "We need your current password to confirm any changes you've made", required: true %>
 
       </div>
       <div class="form-actions">
