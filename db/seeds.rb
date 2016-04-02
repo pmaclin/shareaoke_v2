@@ -29,6 +29,7 @@ Venue.create!([
   {name: "Murasaki Saki Lounge", address: "211 E. Ontario", city: "Chicago", description: "Swanky Japanese lounge with a big sake & spirits list, a small-plates menu & a karaoke room.", user_id: 1},
   {name: "Sakura Karaoke Lounge", address: "234 W. Cermak Rd. ", city: "Chicago", description: "Trendy subterranean karaoke lounge with cocktails, light bites & dancing amid TV displays & sofas. Basement.", user_id: 1},
   {name: "Trader Todd's", address: "3216 N. Sheffield Ave", city: "Chicago", description: "Festive karaoke bar with a beer garden, seafood-filled bar menu & tropical cocktails.", user_id: 1},
-  {name: "Alice's Lounge", address: "3556 W. Belmont", city: "Chicago", description: "They have cider and even gluten free beer (New Grist).", user_id: 1}
+  {name: "Alice's Lounge", address: "3556 W. Belmont", city: "Chicago", description: "They have cider and even gluten free beer (New Grist).", user_id: 1},
+  {name: "Philly Mac's Karaoke Emporium", address: "1971 W. Oakmont", city: "Chicago", description: "The only place in the city where you can do butt naked karaoke! It's awesome!!", user_id: 1}
 ])
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

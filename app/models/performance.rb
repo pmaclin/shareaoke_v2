@@ -9,6 +9,13 @@ class Performance < ActiveRecord::Base
   validates :song, :presence => true
   validates :venue, :presence => true
 
+  def request
+    Request.where( :available => true )
+  end
 
+  # undefined method `available=' for nil:NilClass
+  def available
+    Request.where( :available == true )
+  end
 
 end

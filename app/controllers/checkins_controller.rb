@@ -42,16 +42,6 @@ class CheckinsController < InheritedResources::Base
     redirect_to :back, notice: "You've just checked out. Real nice champ!"
   end
 
-  # def edit
-  #   # @checkin = current_user.checkin
-  #   @checkin.user = current_user
-  #   @checkin.is_checked_in = false # Sets checkin.is_checked_in to "false"
-  #   current_user.is_checked_in = false
-  #   current_user.save
-  #   @checkin.save
-  #   redirect_to :root, notice: "You've just checked out. Real nice champ!"
-  # end
-
   def update
     @checkin.user = current_user
     @checkin.is_checked_in = false # Sets checkin.is_checked_in to "false"
@@ -70,7 +60,6 @@ class CheckinsController < InheritedResources::Base
 
 
   private
-
     # Use callbacks to share common setup or constraints between actions.
 
     def set_checkin
@@ -81,5 +70,5 @@ class CheckinsController < InheritedResources::Base
       params.require(:checkin).permit(:is_checked_in, :user_id, :venue_id)
     end
 
-  end
+end
 

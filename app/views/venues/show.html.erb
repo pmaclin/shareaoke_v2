@@ -20,8 +20,8 @@
               <dd><%= @venue.description %></dd>
 
               <!-- <dt>There are</dt> -->
-              <hr>
-              <dd><h1 align="center"><%= @venue.checkins.count %></h1>performers have checked in @ <%= @venue.name %> tonight!</dd>
+<hr>
+              <dd><h1 align="center"><%= @venue.checkins.count %></h1>Performers have checked in @ <%= @venue.name %> tonight!</dd>
             </dl>
 <hr>
     <% if current_user.present? %>
@@ -47,7 +47,7 @@
               <div class="main-image-container" align="center">
                 <%= image_tag "Karaoke.jpg", :height => '250px', :width => '250px', :class => 'img-circle', :alt => 'Image from the Venue' %>
               </div>
-                <div align=center>
+                <div align="center">
                   <span><a href="#">Rate your experience @ <%= @venue.name %></a></span>
                     <div class="inline-rating">
                       <i class="fa fa-star fa-2x"></i>
@@ -70,7 +70,7 @@
       <% @venue.checkins.each do |checkin| %>
         <% if current_user.is_checked_in == false %>
 
-          <div class="row">
+<!--           <div class="row">
             <ul class="list-group" align="center">
               <li class="list-group-item">
                 <dt align="left">
@@ -78,7 +78,7 @@
                 </dt>
               </li>
             </ul>
-          </div> <!-- end div row -->
+          </div> <!- end div row -->
 
         <% else %>
 
@@ -113,13 +113,13 @@
 
                     <li class="list-group-item">
                       <dt align="left">
-                        <%= request.id %>
+                        <%#= request.id %>
                       </dt>
                       <dt align="left">
                         <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
                       </dt>
                       <dt align="left">
-                        <%= request.user.stagename %> requested <%= request.song.try(:title) %> by <%= request.song.try(:artist) %>
+                        <%= request.user.stagename %> requested "<a href="/songs/<%= request.song_id %>"><%= request.song.try(:title) %></a>" by <%= request.song.try(:artist) %>
                       </dt>
                     </li>
               </ul>
@@ -136,12 +136,12 @@
         <h3 class="panel-title">Performance Queue</h3>
       </div>
       <div class="panel-body">
-        <div class="row">
-          <!-- <div class="col-sm-6" "col-md-6" "col-lg-6"> -->
 
+        <div class="row">
+               <% @venue.performances.each do |performance| %>
+        <% if performance.completed == false %>
               <ul class="list-group" align="center">
-                <% @venue.performances.each do |performance| %>
-                  <% if performance.completed == false %>
+
                     <li class="list-group-item">
                       <dt align="left">
                         <%= image_tag performance.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
@@ -149,6 +149,16 @@
                       <dt align="left">
                       <%= performance.user.stagename %> <%= performance.created_at.strftime("performed on %B %d at %I: %M %p") %>
                       </dt>
+                    <div align="left">
+                      <span><a href="#">Rate this performance?</a></span>
+                        <div class="inline-rating">
+                          <i class="fa fa-microphone fa-2x"></i>
+                          <i class="fa fa-microphone fa-2x"></i>
+                          <i class="fa fa-microphone fa-2x"></i>
+                          <i class="fa fa-microphone fa-2x"></i>
+                          <i class="fa fa-microphone fa-2x"></i>
+                        </div>
+                    </div>
                     </li>
                   <% end %> <!-- end if -->
               </ul>

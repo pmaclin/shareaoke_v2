@@ -8,6 +8,10 @@ class Request < ActiveRecord::Base
   validates :song, :presence => true
   validates :venue, :presence => true
 
+  def performance
+    Performance.where( @performance.completed == false )
+  end
+
   # Create method to get venue name to on request index page
   # Find row in Venue table where Venue's id matches up with the request.venue_id
 

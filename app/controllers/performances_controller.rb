@@ -10,23 +10,11 @@ class PerformancesController < ApplicationController
   end
 
   # GET /performances
-  # GET /performances.json
   def index
     @performances = Performance.where( :venue_id => (current_user.checkin.venue_id))
-
-    # if current_user.is_dj != true
-    #   if current_user.present?
-    #     @performances = current_user.performances
-    #   else
-    #     @performances = Performance.all
-    #   end
-    # else
-    #     @performances = Performance.all
-    # end
   end
 
   # GET /performance
-  # GET /performances/1.json
   def show
   end
 
@@ -35,18 +23,22 @@ class PerformancesController < ApplicationController
     @performance = Performance.new(:user_id => params[:user_id], :song_id => params[:song_id], :venue_id => params[:venue_id] ) #stack overflow...assigning attributes issue
     @performance.completed = false
     @performance.save
-    redirect_to :performances, notice: "Well Done DJ! Go ahead and select the next performer in the queue."
+    @request = Request.find_by(:user_id => params[:user_id])
+      # if @request.present?
+        @request.available = false  #  We've got to set this request.available = false with a new performance
+        @request.save!  #  Then save it.
+      # end
+    redirect_to :performances, notice: "Well Done DJ! This request is in the performance queue below."
   end
 
   # GET /performances/1/edit
   def edit
     @performance.completed = true
     @performance.save
-    redirect_to :performances, notice: "Nice job DJ! Now go to the next performer in the queue!"
+    redirect_to :performances, notice: "Nice, Mr. DJ! Now go to the next performer in the queue!"
   end
 
   # POST /performances
-  # POST /performances.json
   def create
     @performance = Performance.new(performance_params)
 

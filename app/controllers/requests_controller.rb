@@ -1,7 +1,7 @@
 class RequestsController < InheritedResources::Base
   before_action :set_request, only: [:show, :edit, :update, :destroy ]
 
-  before_action :stop_reg_user, only: [:show, :destroy]
+  before_action :stop_reg_user, only: [:show, :destroy, :index]
 
   def stop_reg_user
     if current_user.is_dj != true
@@ -18,7 +18,7 @@ class RequestsController < InheritedResources::Base
     @request.user = current_user
     @request.available = true
     @request.save
-    redirect_to "/", notice: "Cool! You're request is in. The DJ will let you know when you're up!"
+    redirect_to :venue, notice: "Cool! You're request is in. The DJ will let you know when you're up!"
   end
 
   def create
@@ -38,11 +38,10 @@ class RequestsController < InheritedResources::Base
   def edit
     @request.available = false
     @request.save
-    redirect_to :requests, notice: "Nice job DJ! Now go to the next performer in the queue!"
+    redirect_to :requests, notice: "Okay DJ. This request has been removed from the request queue!"
   end
 
   def show
-
   end
 
   private
