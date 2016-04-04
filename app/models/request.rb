@@ -12,6 +12,10 @@ class Request < ActiveRecord::Base
     Performance.where( @performance.completed == false )
   end
 
+  def request
+    @requests = Request.find_by(:available => false)
+  end
+
   # Create method to get venue name to on request index page
   # Find row in Venue table where Venue's id matches up with the request.venue_id
 

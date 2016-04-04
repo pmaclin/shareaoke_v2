@@ -20,15 +20,12 @@ class PerformancesController < ApplicationController
 
   # GET /performances/new
   def new
+    @user = User.find(params[:user_id])
     @performance = Performance.new(:user_id => params[:user_id], :song_id => params[:song_id], :venue_id => params[:venue_id] ) #stack overflow...assigning attributes issue
     @performance.completed = false
     @performance.save
-    @request = Request.find_by(:user_id => params[:user_id])
-      # if @request.present?
-        @request.available = false  #  We've got to set this request.available = false with a new performance
-        @request.save!  #  Then save it.
-      # end
-    redirect_to :performances, notice: "Well Done DJ! This request is in the performance queue below."
+    @performance.remove_request
+    redirect_to :requests, notice: "Well Done DJ! This request is in the performance queue below."
   end
 
   # GET /performances/1/edit

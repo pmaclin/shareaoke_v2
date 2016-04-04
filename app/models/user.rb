@@ -18,6 +18,9 @@ def checkin
   checkins.last
 end
 
+def request
+  @requests = Request.find_by(:available => false)
+end
 
 end
 

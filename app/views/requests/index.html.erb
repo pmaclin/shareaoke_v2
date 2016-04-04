@@ -1,13 +1,9 @@
 <div class="page-header">
   <h1>
-    Requests
-    <%= link_to icon('music'), '#', class: "btn btn-lg btn-success" %>
+    Requests<i class="fa fa-music fa-lg" ></i><small>  <%= current_user.checkin.venue.try(:name) %></small>
+    <%#= link_to icon('music'), '#', class: "btn btn-lg btn-success" %>
   </h1>
 </div>
-
-<%# if @performance.completed == false  %>
-
-<%# else %>
 
 <div class="row isotope-container">
   <% @requests.uniq.each do |request| %>
