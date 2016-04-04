@@ -46,7 +46,7 @@
                   <dd><%= request.venue.try(:name) %></dd>
                 </dl>
 
-                  <% if current_user.is_dj == true %>
+                  <%# if current_user.is_dj == true %>
                           <div class="btn-group btn-group-justified">
                             <%= link_to icon('microphone'), new_performance_path( :song_id => (request.song_id), :user_id => (request.user_id), :venue_id => (request.venue_id) ), data: { confirm: "Hey DJ - If this performer is done you can send them over to the performance queue by clicking 'Ok' below. Coolio?" }, class: "btn btn-success" %>
 
@@ -54,7 +54,7 @@
 
                             <%= link_to icon('minus'), request, method: :delete, data: { confirm: "Do you really want to delete this request?" }, class: "btn btn-warning" %>
                           </div>
-                  <% end %>
+                  <%# end %>
             </div> <!-- panel body -->
 
       </div> <!-- panel panel default -->

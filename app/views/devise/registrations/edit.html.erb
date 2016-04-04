@@ -43,7 +43,7 @@
     <!-- <br> -->
     <ol>
       <p>Your Favorite Spots:  <span class="badge"><%= current_user.checkins.count %></span></p>
-        <% @current_user.checkins.uniq.each do |checkin| %>
+        <% @current_user.checkins.each do |checkin| %>
           <li class="list-group-item">
             <a href="/venues/<%= checkin.venue_id %>"><%= checkin.venue.name %></a> on <%= checkin.created_at.strftime("checked in on %B %d at %I: %M %p") %>
           </li>

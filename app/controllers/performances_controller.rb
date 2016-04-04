@@ -25,7 +25,7 @@ class PerformancesController < ApplicationController
     @performance.completed = false
     @performance.save
     @performance.remove_request
-    redirect_to :requests, notice: "Well Done DJ! This request is in the performance queue below."
+    redirect_to :performances, notice: "Well Done DJ! This request is in the performance queue below."
   end
 
   # GET /performances/1/edit
