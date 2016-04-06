@@ -4,9 +4,9 @@ class Request < ActiveRecord::Base
   belongs_to :song
   belongs_to :checkin
 
-  validates :user, :presence => true
-  validates :song, :presence => true
-  validates :venue, :presence => true
+  # validates :user, :presence => true
+  # validates :song, :presence => true
+  # validates :venue, :presence => true
 
   def performance
     Performance.where( @performance.completed == false )

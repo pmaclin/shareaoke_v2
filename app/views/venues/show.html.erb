@@ -45,7 +45,7 @@
           <div class="col-sm-6" "col-md-6" "col-lg-6">
             <dt align="center">Welcome to <%= @venue.name %></dt>
               <div class="main-image-container" align="center">
-                <%= image_tag "Brandos_Logo.png", :height => '250px', :width => '250px', :class => 'img-circle', :alt => 'Image from the Venue' %>
+                <%= image_tag @venue.image, :height => '250px', :width => '250px', :class => 'img-circle', :alt => 'Image from the Venue' %>
               </div>
                 <div align="center">
                   <span><a href="#">Rate your experience @ <%= @venue.name %></a></span>

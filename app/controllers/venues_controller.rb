@@ -5,7 +5,7 @@ class VenuesController < ApplicationController
 
   def stop_reg_user
     if current_user.is_admin != true
-      redirect_to :back, notice: "Sorry. Only admin can do that."
+      redirect_to :venues, notice: "Sorry. Only admin can do that."
     end
   end
 
@@ -77,6 +77,6 @@ class VenuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def venue_params
-      params.require(:venue).permit(:name, :address, :city, :description, :user_id)
+      params.require(:venue).permit(:name, :address, :city, :description, :user_id, :image)
     end
 end
