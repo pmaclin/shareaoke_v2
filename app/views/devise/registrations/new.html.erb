@@ -1,18 +1,50 @@
-<h2>Sign up</h2>
+<!-- <div class="jumbotron">
+  <div class="container">
+    <%#= image_tag "Karaoke.jpg", :height => '500px', :width => '1500px', :class => 'img-square', :alt => 'Happy White People' %>
+    <h1>Hello, world!</h1>
+      <p>...</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+  </div>
+</div> -->
+<div class="container">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" align="center">
+    <h2 align="center"><em>Happy White People doing Karaoke</em></h2><br>
+    <%= image_tag "Karaoke.jpg", :height => '360px', :width => '600px', :class => 'img-square', :alt => 'Happy White People' %>
+<br>
+<br>
+      <div class="container" align="left">
+        <ul style="list-style-type:none">
+          <li><i class="fa fa-glass fa-1x"></i>     Check In</li><p>
+          <li><i class="fa fa-music fa-1x"></i>     Select a Song</li><p>
+          <li><i class="fa fa-microphone fa-1x"></i>     Perform</li><p>
+          <li><i class="fa fa-star fa-1x"></i>     Be a Rockstar</li><p>
+          <li><i class="fa fa-refresh fa-1x"></i>     Repeat</li>
+        </ul>
+      </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :stagename, required: true, hint: "Choose wisely, my friend! Stage Name cannot be changed." %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <h2>Sign up</h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :stagename, required: true, hint: "Choose wisely, my friend! Stage Name cannot be changed." %>
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+
+
+</div>

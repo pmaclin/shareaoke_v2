@@ -43,9 +43,9 @@
     <% end %>
           </div> <!-- end col-md-12 -->
           <div class="col-sm-6" "col-md-6" "col-lg-6">
-            <dt align="center"><%= @venue.name %></dt>
+            <dt align="center">Welcome to <%= @venue.name %></dt>
               <div class="main-image-container" align="center">
-                <%= image_tag "Karaoke.jpg", :height => '250px', :width => '250px', :class => 'img-circle', :alt => 'Image from the Venue' %>
+                <%= image_tag "Brandos_Logo.png", :height => '250px', :width => '250px', :class => 'img-circle', :alt => 'Image from the Venue' %>
               </div>
                 <div align="center">
                   <span><a href="#">Rate your experience @ <%= @venue.name %></a></span>
@@ -62,6 +62,9 @@
       </div> <!-- end panel body -->
     </div> <!-- end panel panel-default -->
 
+</div> <!-- end div class column offset -->
+
+    <div class="col-xs-12 col-md-12 col-lg-6">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Who's Checked In</h3>
@@ -69,16 +72,6 @@
       <div class="panel-body">
       <% @venue.checkins.each do |checkin| %>
         <% if current_user.is_checked_in == false %>
-
-<!--           <div class="row">
-            <ul class="list-group" align="center">
-              <li class="list-group-item">
-                <dt align="left">
-                <%= checkin.user.stagename %> has checked out.
-                </dt>
-              </li>
-            </ul>
-          </div> <!- end div row -->
 
         <% else %>
 
@@ -100,6 +93,8 @@
 
       </div>  <!-- end panel body -->
     </div> <!-- end panel panel-default -->
+
+
 
 <!-- REQUEST QUEUE -->
     <div class="panel panel-default">
@@ -136,10 +131,9 @@
         <h3 class="panel-title">Performance Queue</h3>
       </div>
       <div class="panel-body">
-
         <div class="row">
-               <% @venue.performances.each do |performance| %>
-        <% if performance.completed == false %>
+          <% @venue.performances.each do |performance| %>
+            <% if performance.completed == true %>
               <ul class="list-group" align="center">
 
                     <li class="list-group-item">
@@ -167,9 +161,86 @@
         </div> <!-- end row -->
       </div>  <!-- end panel body -->
     </div> <!-- end panel panel-default -->
+</div>
+
+<!-- RIGHT HAND COLUMN -->
+<div class="col-xs-12 col-md-12 col-lg-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <h3 class="panel-title">LR - Ad Queue - Venue Placed Ads</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <a href="#" class="thumbnail">
+            <%= image_tag "Karaoke.jpg", :height => '200px', :width => '200px', :class => 'img-square', :alt => 'Image from the Venue' %>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-6">
+          <h4 align="center">KARAOKE! | <small>Starts @ 7pm</small></h4>
+          <ul style="list-style-type:none">
+            <li>Drink Special One</li>
+            <li>Drink Special Tow</li>
+            <li>Drink Special Three</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-6">
+          <a href="#" class="thumbnail">
+            <%= image_tag "Happy_Hour.png", :height => '200px', :width => '200px', :class => 'img-square', :alt => 'Image from the Venue' %>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-6">
+          <h4 align="center">Happy Hour! | <small>5-7pm</small></h4>
+          <ul style="list-style-type:none">
+            <li>$5 Margharitas!</li>
+            <li>$2 PBR</li>
+            <li>Craft Beer Specials on tap</li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <a href="#" class="thumbnail">
+            <%= image_tag "Bartenders.png", :height => '200px', :width => '200px', :class => 'img-square', :alt => 'Image from the Venue' %>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-6">
+          <h4 align="center">Meet Your Bartenders </h4>
+          <ul style="list-style-type:none">
+            <li>Sally Sue</li>
+            <li>Amy Smith</li>
+            <li>John Tapper</li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <a href="#" class="thumbnail">
+            <%= image_tag "Specials.jpg", :height => '200px', :width => '200px', :class => 'img-square', :alt => 'Image from the Venue' %>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-6">
+          <h4 align="center">Weekly Specials</h4>
+          <ul style="list-style-type:none">
+            <li>Monday: </li>
+            <li>Tuesday: </li>
+            <li>Wednesday: </li>
+            <li>Thursday: </li>
+            <li>Friday: </li>
+          </ul>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
 
 
-  </div> <!-- end div class column offset -->
+
 </div> <!-- end div row -->
 
 <!-- End responsive panel example -->
