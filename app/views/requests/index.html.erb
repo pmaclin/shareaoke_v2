@@ -5,8 +5,11 @@
   </h1>
 </div>
 
+
+
 <div class="row isotope-container">
   <% @requests.uniq.each do |request| %>
+
     <% if request.available == false %>
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
         <div class="panel panel-default">

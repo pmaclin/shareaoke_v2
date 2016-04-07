@@ -12,7 +12,6 @@
           <% end %>
         <%#= f.input :password, autocomplete: "off", hint: "leave this blank if you don't want to change it", required: false %>
 
-
         <div class="row">
           <div class="col-sm-6 col-md-6 col-lg-6">
             <%= image_tag @user.avatar, :height => '150px', :width => '150px', :class => 'img-square' %>
@@ -40,20 +39,22 @@
       <% if @total_checkins == 0 %>
           <h4><em>"We don't need no stinkin' badges!"</em></h4>
       <% elsif @total_checkins > 0 and @total_checkins <= 4 %>
-          <h4><em>Congratulations! You've earned stars!</em></h4>
+          <h4><em>Congratulations, <%= current_user.stagename %>! You've earned stars!</em></h4>
           <p><font color="yellow"><i class="fa fa-star fa-1x"></i></font>  Earned for you're first Check In!</p>
       <% elsif @total_checkins >= 5 and @total_checkins <= 9 %>
-          <h4><em>Congratulations! You've earned MORE stars!</em></h4>
+          <h4><em><%= current_user.stagename %>! You've earned MORE stars!</em></h4>
           <p><font color="yellow"><i class="fa fa-star fa-1x"></i></font><font color="purple"><i class="fa fa-star fa-2x"></i></font>  Earned for your 5th Check In!</p>
       <% elsif @total_checkins >= 10 and @total_checkins <= 14 %>
           <h4><em>Hey! You like this karaoke stuff, huh?!</em></h4>
           <p><font color="yellow"><i class="fa fa-star fa-1x"></i></font><font color="purple"><i class="fa fa-star fa-2x"></i></font><font color="blue"><i class="fa fa-star fa-3x"></i></font>  Earned for your 10th Check In!. Impressive!</p>
       <% elsif @total_checkins >= 15 and @total_checkins <= 19 %>
-          <h4><em>Yo! You are Killin' it, Superstar!</em></h4>
+          <h4><em>Yo, <%= current_user.stagename %>! You are Killin' it, Superstar!</em></h4>
           <p><font color="yellow"><i class="fa fa-star fa-1x"></i></font><font color="purple"><i class="fa fa-star fa-2x"></i></font><font color="blue"><i class="fa fa-star fa-3x"></i></font><font color="green"><i class="fa fa-star fa-4x"></i></font>  Earned for you 15th Check In!</p>
-      <% elsif @total_checkins >= 20 and @total_checkins <= 29 %>
+      <% elsif @total_checkins >= 20 and @total_checkins <= 99 %>
           <h4><em>Okay...lookout. I'm blinded by your starlight!</em></h4>
           <p><font color="yellow"><i class="fa fa-star fa-1x"></i></font><font color="purple"><i class="fa fa-star fa-2x"></i></font><font color="blue"><i class="fa fa-star fa-3x"></i></font><font color="green"><i class="fa fa-star fa-4x"></i></font><font color="red"><i class="fa fa-star fa-5x"></i></font>  Earned for 20 or more Check Ins. U-R-A Beast!</p>
+      <% elsif @total_checkins >= 20 and @total_checkins <= 99 %>
+          <h4><em>Hey, Ummm....<%= current_user.stagename %>, listen... This is kinda difficult for us but we were thinkin... There are support groups for things like this! Or, maybe you're a dj? </em></h4>
       <% end %>
   </div>
 
@@ -72,11 +73,7 @@
       <p>Your Favorite Spots:  <span class="badge"><%= current_user.checkins.count %></span></p>
         <% @current_user.checkins.select(:venue_id).distinct.each do |checkin| %>
           <li class="list-group-item">
-            <a href="/venues/<%= checkin.venue_id %>"><%= checkin.venue.name %></a> <%#= checkin.created_at.strftime("checked in on %B %d at %I: %M %p") %>/ <%= Checkin.where({ :venue_id => checkin.venue_id, :user_id => current_user.id}).count %>x
-                          <%# @reward = Checkin.where({ :venue_id => checkin.venue_id, :user_id => current_user.id}).count %>
-<!--                             <%# if @reward >= 1 %>
-                              Congratulations! You've earned a <i class="fa fa-star fa-1x"></i> with your first checkin.
-                            <%# end %> -->
+            <a href="/venues/<%= checkin.venue_id %>"><%= checkin.venue.name %></a> <%#= checkin.created_at.strftime("checked in on %B %d at %I: %M %p") %>(<%= Checkin.where({ :venue_id => checkin.venue_id, :user_id => current_user.id}).count %>x)
           </li>
         <% end %>
     </ol>
@@ -90,7 +87,7 @@
           </li>
         <% end %>
     </ol>
-    <br> <!-- .map(&:request) -->
+    <br> <!--  -->
     <ol>
       <p>Your Performances:  <span class="badge">  <%= current_user.performances.count %></span></p>
         <% @current_user.performances.each do |performance| %>
@@ -100,16 +97,7 @@
         <% end %>
     </ol>
     <br>
-    <!-- A different way to present the same data -->
-    <!-- <ol> -->
-<!--       <p>Performances...  <span class="badge">  <%#= current_user.performances.count %></span></p>
-        <%# performances = Performance.where({ :user_id => current_user })  %>
-          <%# performances.each do |performance| %>
-        <li class="list-group-item">
-          <%#= performance.song.title %><small> by <%#= performance.song.artist %></small>
-        </li>
-        <%# end %> -->
-    <!-- </ol> -->
+
   </div>
 </div>
 <hr>

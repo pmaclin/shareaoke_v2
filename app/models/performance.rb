@@ -9,13 +9,13 @@ class Performance < ActiveRecord::Base
   validates :song, :presence => true
   validates :venue, :presence => true
 
+# initializes @user and selects correct request
   def remove_request
-    # initializes @user and selects correct request
     @request = Request.find_by(:available => true, :user_id => self.user_id)
-    # if @request.available == true
-        # flips value to "false"
+    if @request.available == true
         @request.available = false
-    # end
+        @request.has_requested = false
+    end
     @request.save
   end
 

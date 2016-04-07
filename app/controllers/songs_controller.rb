@@ -5,7 +5,7 @@ class SongsController < ApplicationController
 
   def stop_reg_user
     if current_user.is_admin != true
-      redirect_to :back, notice: "Sorry. Only admin can do that."
+      redirect_to :songs, notice: "Sorry. Only admin can do that."
     end
   end
 

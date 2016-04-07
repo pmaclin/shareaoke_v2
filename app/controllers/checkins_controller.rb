@@ -1,11 +1,11 @@
 class CheckinsController < InheritedResources::Base
   before_action :set_checkin, only: [:show, :edit, :update, :destroy ]
 
-  before_action :stop_reg_user, only: [:show, :index]
+  before_action :stop_reg_user, only: [:show, :index, :edit, :update]
 
   def stop_reg_user
     if current_user.is_dj != true
-      redirect_to :back, notice: "Sorry. Only the DJ has access to that!"
+      redirect_to :checkins, notice: "Sorry. Only the DJ has access to that!"
     end
   end
 

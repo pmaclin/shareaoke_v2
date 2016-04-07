@@ -5,7 +5,7 @@ class PerformancesController < ApplicationController
 
   def stop_reg_user
     if current_user.is_dj != true
-      redirect_to :back, notice: "Sorry. Only the DJ has access to that!"
+      redirect_to :performances, notice: "Sorry. Only the DJ has access to that!"
     end
   end
 
@@ -25,7 +25,7 @@ class PerformancesController < ApplicationController
     @performance.completed = false
     @performance.save
     @performance.remove_request
-    redirect_to :performances, notice: "Well Done DJ! This request is in the performance queue below."
+    redirect_to :requests, notice: "Well Done DJ! This request is in the performance queue below."
   end
 
   # GET /performances/1/edit

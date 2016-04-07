@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406065731) do
+ActiveRecord::Schema.define(version: 20160407181108) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -77,9 +77,10 @@ ActiveRecord::Schema.define(version: 20160406065731) do
     t.integer  "user_id"
     t.integer  "song_id"
     t.integer  "venue_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "checkin_id"
+    t.boolean  "has_requested"
   end
 
   add_index "requests", ["song_id"], name: "index_requests_on_song_id"

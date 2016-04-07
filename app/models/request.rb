@@ -8,6 +8,13 @@ class Request < ActiveRecord::Base
   # validates :song, :presence => true
   # validates :venue, :presence => true
 
+  def user_cannot_make_more_than_one_request
+    @request = Request.where( user_id: (current_user.id), :has_requested => true )
+    if @request.present?
+      redirect_to :root, notice: "Oooops! It appears you already have a request in queue. You can make another request after your performance."
+    end
+  end
+
   def performance
     Performance.where( @performance.completed == false )
   end

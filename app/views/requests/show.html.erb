@@ -21,8 +21,9 @@
 
               <dt>Venue</dt>
               <dd><%#= current_user.checkin %></dd>
-
             </dl>
+
+
             <div class="btn-group btn-group-justified">
               <%= link_to icon('chevron-left'), requests_path, class: "btn btn-primary" %>
 
@@ -30,6 +31,8 @@
 
               <%= link_to icon('trash-o'), @request, method: :delete, data: { confirm: "Do you really want to delete this request?" }, class: "btn btn-danger" %>
             </div>
+
+
           </div>
         </div>
       </div>
