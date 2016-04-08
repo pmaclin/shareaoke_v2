@@ -42,7 +42,7 @@ class RequestsController < InheritedResources::Base
     @request.available = false
     @request.has_requested = false
     @request.save
-    redirect_to :requests, notice: "Okay DJ. This request has been removed from the request queue!"
+    redirect_to :requests, notice: "Okay DJ. This request has been removed from the request queue! The performer is now able to request a new song."
   end
 
   def show

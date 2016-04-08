@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407181108) do
+ActiveRecord::Schema.define(version: 20160408025945) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 20160407181108) do
     t.integer  "performance_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "rating"
+    t.text     "content"
+    t.string   "headline"
   end
 
   add_index "reviews", ["performance_id"], name: "index_reviews_on_performance_id"
