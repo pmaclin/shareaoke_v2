@@ -48,6 +48,7 @@
             <dt>Rating</dt>
             <dd><%= performance.rating %></dd>
             <div class="btn-group btn-group-justified">
+              <%#= link_to icon('pencil'), new_review_path( :performance_id => params[:id] ), class: "btn btn-lg btn-success" %>
               <%= link_to icon('remove'), '#', class: "btn btn-danger" %>
             </div>
     <% end %>

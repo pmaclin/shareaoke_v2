@@ -8,39 +8,39 @@
 <!-- Responsive, Isotope-based layout example -->
 
 <div class="row">
-  <div class="col-xs-12">
+  <!-- <div class="col-xs-12">
     <input type="text" id="quicksearch" placeholder="Search Reviews (start typing)" class="form-control">
-  </div>
+  </div> -->
 </div>
 
-<hr>
+<!-- <hr> -->
 
 <div class="row isotope-container">
 <% @reviews.each do |review| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Review #<%= review.id %></h3>
-      </div>
-      <div class="panel-body">
-        <dl>
-          <dt>User</dt>
-          <dd><%= review.user %></dd>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Review #<%#= @performance.review_id %></h3>
+          </div>
+          <div class="panel-body">
+            <dl>
+              <dt>User</dt>
+              <dd><%#= performance.review.user %></dd>
 
-          <dt>Performance</dt>
-          <dd><%= review.performance %></dd>
+              <dt>Performance</dt>
+              <dd><%#= review.performance %></dd>
 
-        </dl>
-        <div class="btn-group btn-group-justified">
-          <%= link_to icon('search-plus'), review, class: "btn btn-primary" %>
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <%= link_to icon('search-plus'), review, class: "btn btn-primary" %>
 
-          <%= link_to icon('edit'), edit_review_url(review), class: "btn btn-warning" %>
+              <%= link_to icon('edit'), edit_review_url(review), class: "btn btn-warning" %>
 
-          <%= link_to icon('trash-o'), review, method: :delete, data: { confirm: "Do you really want to delete this review?" }, class: "btn btn-danger" %>
+              <%= link_to icon('trash-o'), review, method: :delete, data: { confirm: "Do you really want to delete this review?" }, class: "btn btn-danger" %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 <% end %>
 </div>
 

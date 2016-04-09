@@ -9,15 +9,40 @@
 
 <div class="container">
 
+<div class="row">
 <!-- COLUMN #1 -->
-  <div class="row">
-
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" align="center">
-    <h2 align="center">"<em>The new way to Karaoke</em>"</h2><br>
-      <%= image_tag "Karaoke.jpg", :height => '360px', :width => '600px', :class => 'img-circle', :alt => 'Karaoke Singers' %>
-    <br>
-    <br>
-    <h2 align="center">"<em>How it Works</em>"</h2>
+      <h2 align="center"><em>Karaoke Revisited</em></h2><br>
+        <%= image_tag "Karaoke.jpg", :height => '360px', :width => '600px', :class => 'img-circle', :alt => 'Karaoke Singers' %>
+    </div>
+      <br>
+      <br>
+<!-- COLUMN #2 -->
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      <h2>Sign up</h2>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :stagename, required: true, hint: "Choose wisely, my friend! Stage Name cannot be changed." %>
+          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          <%= f.input :password_confirmation, required: true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </div> <!-- end row #1 -->
+
+<!-- Row #2 -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" align="left">
+     <h3 align="left"><em>How it Works</em></h3>
       <div class="media" align="left">
         <div class="media-left">
           <a href="#">
@@ -73,28 +98,5 @@
           Nuff said, Superstar. It's now your world...and we're all just livin' in it.
         </div>
       </div>
-
-    </div>
-
-<!-- COLUMN #2 -->
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-      <h2>Sign up</h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
-
-        <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
-          <%= f.input :stagename, required: true, hint: "Choose wisely, my friend! Stage Name cannot be changed." %>
-          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-          <%= f.input :password_confirmation, required: true %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up" %>
-        </div>
-      <% end %>
-      <%= render "devise/shared/links" %>
-    </div>
-
   </div>
 </div>

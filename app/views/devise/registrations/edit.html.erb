@@ -34,7 +34,6 @@
     <% end %>
 <br>
   <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12" align="center">
-
     <% @total_checkins = Checkin.where({ :user_id => current_user.id}).count %>
       <% if @total_checkins == 0 %>
           <h4><em>"We don't need no stinkin' badges!"</em></h4>
@@ -57,14 +56,6 @@
           <h4><em>Hey, Ummm....<%= current_user.stagename %>, listen... This is kinda difficult for us but we were thinkin... There are support groups for things like this! Or, maybe you're a dj? </em></h4>
       <% end %>
   </div>
-
-<!--   <div class="inline-rating">
-    <i class="fa fa-microphone fa-2x"></i>
-    <i class="fa fa-microphone fa-2x"></i>
-    <i class="fa fa-microphone fa-2x"></i>
-    <i class="fa fa-microphone fa-2x"></i>
-    <i class="fa fa-microphone fa-2x"></i>
-  </div> -->
 </div>
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
@@ -101,11 +92,12 @@
           </li>
         <% end %>
     </ol>
-    <br>
-
-  </div>
 </div>
+
+</div> <!-- End container -->
+
 <hr>
+
 <div class="container" align="center">
   <div class="row">
 <!--     <h3>Cancel my account</h3> -->

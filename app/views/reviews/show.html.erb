@@ -4,17 +4,25 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Review #<%= @review.id %></h3>
+        <h3 class="panel-title">Review #<%= @review.id %> from performance # <%= @review.performance.id %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>User</dt>
-              <dd><%= @review.user %></dd>
 
-              <dt>Performance</dt>
-              <dd><%= @review.performance %></dd>
+              <dt>Performer</dt>
+              <dd><%= @review.performance.user.stagename %></dd>
+
+              <dt>Headline:</dt>
+              <dd><%= @review.headline %></dd>
+
+              <dt>Detail:</dt>
+              <dd><%= @review.content %></dd>
+              <br>
+              <dd><%= @review.user.stagename %> gives the performance a <%= @review.rating %> out of 5</dd>
+
+              <dd><%#= @review.performance %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">
@@ -32,3 +40,8 @@
 </div>
 
 <!-- End responsive panel example -->
+
+
+
+
+

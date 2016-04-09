@@ -1,7 +1,7 @@
 class PerformancesController < ApplicationController
   before_action :set_performance, only: [:show, :edit, :update, :destroy]
 
-  before_action :stop_reg_user, only: [:show]
+  before_action :stop_reg_user, only: []
 
   def stop_reg_user
     if current_user.is_dj != true

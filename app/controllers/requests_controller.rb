@@ -14,14 +14,12 @@ class RequestsController < InheritedResources::Base
   end
 
   def new
-
       @request = Request.new( :song_id => params[:song_id], user_id: (current_user.id), venue_id: (current_user.checkin.venue_id) )
       @request.user = current_user
       @request.available = true
       @request.has_requested = true
       @request.save
       redirect_to :root, notice: "Cool! You're request is in. The DJ will let you know when you're up!"
-
   end
 
   def create
