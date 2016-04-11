@@ -1,6 +1,6 @@
 <!-- Responsive panel example-->
 <div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-12 col-lg-offset-0 col-lg-12">
+  <div class="col-sm-offset-1 col-sm-12 col-md-offset-2 col-md-12 col-lg-offset-0 col-lg-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= @venue.name %></h3>
@@ -19,19 +19,22 @@
               <dd><%= @venue.description %></dd>
 
 <hr>
-              <dd><h1 align="center"><%= @venue.checkins.count %></h1>Performers have checked in @ <%= @venue.name %> tonight!</dd>
-            </dl>
+             <dt><strong><font color="fffff"><%= @venue.checkins.count %></font></strong></dt>
+             <dd>Performers have checked in @ <%= @venue.name %> tonight!</dd>
+          </dl>
 <hr>
     <% if current_user.present? %>
             <div class="row">
+            <div class="col-sm-offset-1 col-sm-12 col-md-offset-2 col-md-12 col-lg-offset-0 col-lg-12">
 
                 <% if current_user.is_checked_in == true %>
-                          <%= form_tag("/checkins/#{params[:id]}/check_out", method:"post") do %>
+                          <%#= form_tag("/checkins/#{params[:id]}/check_out", method:"post") do %>
                             <div align="center">
-                              <label for="Checkout" >Ready to Checkout?: </label>
-                                    <input align="right" type="submit" value="Checkout">
+                              <label for="Checkout" align="center" >Checkout of your current location if you want to check in @ <%= @venue.name %> </label>
+                                    <!-- <input align="right" type="submit" value="Checkout"> -->
+                                    <p><%= link_to icon('check'),"/checkins/#{params[:id]}/check_out", method:"post", class: "btn btn-lg btn-danger" %></p>
                             </div>
-                          <% end %>
+                          <%# end %>
                 <% else %>
                      <div class="col-lg-12" align="center">
                           <dt>Check In at <%= @venue.name %> <%= link_to icon('check'), new_checkin_path( :venue_id => params[:id], :user_id => (current_user.id) ), class: "btn btn-lg btn-success" %></dt>
@@ -39,13 +42,14 @@
               <% end %>
             </div>
     <% end %>
+            </div>
           </div> <!-- end col-md-12 -->
           <div class="col-sm-6" "col-md-6" "col-lg-6">
             <dt align="center">Welcome to <%= @venue.name %></dt>
               <div class="main-image-container" align="center">
                 <%= image_tag @venue.image, :height => '250px', :width => '250px', :class => 'img-circle', :alt => 'Image from the Venue' %>
               </div>
-                <div align="center">
+<!--                 <div align="center">
                   <span><a href="#">Rate your experience @ <%= @venue.name %></a></span>
                     <div class="inline-rating">
                       <i class="fa fa-star fa-2x"></i>
@@ -54,7 +58,7 @@
                       <i class="fa fa-star fa-2x"></i>
                       <i class="fa fa-star fa-2x"></i>
                     </div>
-                </div>
+                </div> -->
           </div>
         </div> <!-- end panel row -->
       </div> <!-- end panel body -->
@@ -78,8 +82,8 @@
               <li class="list-group-item">
                 <dt align="left">
                 <%= image_tag checkin.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
-                </dt>
-                <dt align="left">
+<!--                 </dt>
+                <dt align="left"> -->
                 <%= checkin.user.stagename %> <%= checkin.created_at.strftime("checked in on %B %d at %I: %M %p") %>
                 </dt>
               </li>
@@ -107,8 +111,8 @@
                     <li class="list-group-item">
                       <dt align="left">
                         <%#= request.id %>
-                      </dt>
-                      <dt align="left">
+<!--                       </dt>
+                      <dt align="left"> -->
                         <%= image_tag request.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
                       </dt>
                       <dt align="left">
@@ -137,11 +141,11 @@
                     <li class="list-group-item">
                       <dt align="left">
                         <%= image_tag performance.user.avatar, :height => '50px', :width => '50px', :class => 'img-circle' %>
-                      </dt>
-                      <dt align="left">
+<!--                       </dt>
+                      <dt align="left"> -->
                       <%= performance.user.stagename %> <%= performance.created_at.strftime("performed on %B %d at %I: %M %p") %>
                       </dt>
-                    <div align="left">
+<!--                     <div align="left">
                       <span><a href="#">Rate this performance?</a></span>
                         <div class="inline-rating">
                           <i class="fa fa-microphone fa-2x"></i>
@@ -150,7 +154,7 @@
                           <i class="fa fa-microphone fa-2x"></i>
                           <i class="fa fa-microphone fa-2x"></i>
                         </div>
-                    </div>
+                    </div> -->
                     </li>
                   <% end %> <!-- end if -->
               </ul>

@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">New Review for performance # <%= @review.performance_id %></h3>
-        <p>Reviewing <%= @review.performance.user.stagename.pluralize %> performance of <%#= @review.performance.song.artist.pluralize %> "<%#= @review.performance.song.title %>"</p>
+        <p>Reviewing <%= @review.performance.user.stagename.pluralize %> performance of <%= @review.performance.song.artist.pluralize %> "<%= @review.performance.song.title %>"</p>
       </div>
       <div class="panel-body">
         <%= render 'form', review: @review %>

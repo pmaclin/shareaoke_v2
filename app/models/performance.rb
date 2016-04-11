@@ -9,6 +9,12 @@ class Performance < ActiveRecord::Base
   validates :song, :presence => true
   validates :venue, :presence => true
 
+  # <%= @performance.reviews.count %>
+  def ave_rating
+    @ave_rating = @performance.reviews.reduce(:+).to_f / @performance.reviews.size
+  end
+
+
 # initializes @user and selects correct request
   def remove_request
     @request = Request.find_by(:available => true, :user_id => self.user_id)

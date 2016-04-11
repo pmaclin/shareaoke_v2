@@ -32,8 +32,7 @@ class CheckinsController < InheritedResources::Base
   end
 
   def check_out
-    # @checkin.destroy
-    @checkin = Checkin.new()
+    @checkin = Checkin.find_by(params[:id])
     @checkin.user = current_user
     @checkin.is_checked_in = false
     current_user.is_checked_in = false
@@ -43,20 +42,17 @@ class CheckinsController < InheritedResources::Base
   end
 
   def update
-    @checkin.user = current_user
-    @checkin.is_checked_in = false # Sets checkin.is_checked_in to "false"
-    current_user.is_checked_in = false
-    current_user.save
-    @checkin.save
-
     respond_to do |format|
       if @checkin.update(checkin_params)
+        @checkin.is_checked_in = false
+        @checkin.save
         format.html { redirect_to @checkin, notice: 'checkin was successfully updated.' }
       else
         format.html { render :edit }
       end
     end
   end
+
 
 
   private

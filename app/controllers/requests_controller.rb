@@ -14,12 +14,16 @@ class RequestsController < InheritedResources::Base
   end
 
   def new
+    if current_user.is_checked_in == false
+      redirect_to :back, notice: "You need to be checked in to a bar before you can request a song. Click on  'Find a Karaoke Bar' to check into first, then make your request."
+    elsif
       @request = Request.new( :song_id => params[:song_id], user_id: (current_user.id), venue_id: (current_user.checkin.venue_id) )
       @request.user = current_user
       @request.available = true
       @request.has_requested = true
       @request.save
       redirect_to :root, notice: "Cool! You're request is in. The DJ will let you know when you're up!"
+    end
   end
 
   def create
