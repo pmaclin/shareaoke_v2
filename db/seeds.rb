@@ -1,6 +1,6 @@
-# AdminUser.create!([
-#   {email: "admin@example.com", encrypted_password: "$2a$10$Y3mYUDiSpIzwLjCPOsa7rOXO1XmL6ekHjC1WX45OuH.6Qp9rn3juu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 38, current_sign_in_at: "2016-04-04 15:55:10", last_sign_in_at: "2016-03-31 23:27:12", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
-# ])
+AdminUser.create!([
+  {email: "exec_admin@example.com", encrypted_password: "$2a$10$Y3mYUDiSpIzwLjCPOsa7rOXO1XmL6ekHjC1WX45OuH.6Qp9rn3juu", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-04-04 15:55:10", last_sign_in_at: "2016-03-31 23:27:12", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
+])
 # Checkin.create!([
 #   {is_checked_in: true, user_id: 4, venue_id: 1},
 #   {is_checked_in: true, user_id: 7, venue_id: 1},
