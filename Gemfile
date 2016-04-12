@@ -8,7 +8,10 @@ gem 'seed_dump'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 
-
+# For setup of environmental variables
+gem 'figaro'
+# Carrierwave will talk with fog behind the scenes to handle our image file storage on Amazon S3
+gem 'fog-aws'
 
 gem 'aws-sdk', '~> 2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
