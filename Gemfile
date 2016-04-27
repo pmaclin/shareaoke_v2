@@ -8,7 +8,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'seed_dump'
 gem 'devise'
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre2'
 
 # For setup of environmental variables
 gem 'figaro'
