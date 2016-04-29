@@ -1,6 +1,6 @@
-ruby '2.2.4'
-
 source 'https://rubygems.org'
+
+ruby '2.2.4'
 
 gem 'font-awesome-sass'
 gem 'bootstrap-sass'
@@ -45,6 +45,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -57,9 +58,12 @@ group :development, :test do
 end
 
 group :production do
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rails', '~> 1.1.3'
+  gem 'capistrano-rbenv', '~> 2.0.3'
+
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'unicorn'
   gem 'mysql2', '~> 0.3.18'
 end
-
