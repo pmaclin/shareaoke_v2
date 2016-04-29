@@ -6,7 +6,7 @@ require 'capistrano/deploy'
 
 require 'capistrano/rbenv'
 set :rbenv_type, :user
-set :rbenv_ruby, '2.2.4p230'
+set :rbenv_ruby, '2.2.4'
 
 # Include tasks from other gems included in your Gemfile
 #
