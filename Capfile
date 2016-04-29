@@ -6,7 +6,7 @@ require 'capistrano/deploy'
 
 require 'capistrano/rbenv'
 set :rvm_type, :user
-set :rvm_ruby_version, '2.2.4p230'
+set :rvm_ruby_version, '2.2.4'
 
 # Include tasks from other gems included in your Gemfile
 #
@@ -24,7 +24,7 @@ set :rvm_ruby_version, '2.2.4p230'
 # require 'capistrano/chruby'
 require 'capistrano/bundler'
 require 'capistrano/rails'
-require 'capistrano/passenger'
+# require 'capistrano/passenger'
 # require 'capistrano/rails/assets'
 # require 'capistrano/rails/migrations'
 
