@@ -5,8 +5,8 @@ require 'capistrano/setup'
 require 'capistrano/deploy'
 
 require 'capistrano/rbenv'
-set :rvm_type, :user
-set :rvm_ruby_version, '2.2.4'
+set :rbenv_type, :user
+set :rbenv_ruby, '2.2.4'
 
 # Include tasks from other gems included in your Gemfile
 #
