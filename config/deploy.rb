@@ -4,7 +4,7 @@ lock '3.4.1'
 set :application, 'shareaoke'
 set :repo_url, 'git@github.com:pmaclin/shareaoke_v2.git'
 
-Default branch is :april_branch
+# Default branch is :april_branch
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
