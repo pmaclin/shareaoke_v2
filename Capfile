@@ -1,5 +1,9 @@
 # Load DSL and set up stages
 # Include default deployment tasks
+require 'capistrano/setup'
+
+require 'capistrano/deploy'
+
 require 'capistrano/bundler'
 
 require 'capistrano/rails'
@@ -11,9 +15,9 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.2.4'
 
 
-# require 'capistrano/deploy'
 
-# require 'capistrano/setup'
+
+
 
 
 
