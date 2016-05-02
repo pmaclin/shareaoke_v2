@@ -64,6 +64,8 @@ group :production do
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
+  gem 'sqlite3'
+
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'unicorn'
