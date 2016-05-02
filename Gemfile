@@ -12,6 +12,7 @@ gem 'activeadmin', '~> 1.0.0.pre2'
 
 # For setup of environmental variables
 gem 'figaro'
+
 # Carrierwave will talk with fog behind the scenes to handle our image file storage on Amazon S3
 gem 'fog'
 
@@ -44,8 +45,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-
 
 
 group :development, :test do
