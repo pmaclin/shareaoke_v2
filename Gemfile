@@ -46,6 +46,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Passenger as the app server
+gem 'passenger', '>= 5.0.25', require: 'phusion_passenger/rack_handler'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -59,10 +61,11 @@ group :development, :test do
 end
 
 group :production do
-  gem 'capistrano', '~> 3.4.1'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-rails', '~> 1.1.1'
-  gem 'capistrano-rbenv', github: "capistrano/rbenv"
+
+  # gem 'capistrano', '~> 3.4.1'
+  # gem 'capistrano-bundler', '~> 1.1.2'
+  # gem 'capistrano-rails', '~> 1.1.1'
+  # gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
   # gem 'sqlite3'
 
