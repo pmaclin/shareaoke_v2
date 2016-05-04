@@ -35,8 +35,10 @@ class CheckinsController < InheritedResources::Base
     @checkin = Checkin.find_by(params[:id])
     @checkin.user = current_user
     @checkin.is_checked_in = false
-    current_user.is_checked_in = false
-    current_user.save
+    if current_user.is_checked_in == true
+      current_user.is_checked_in = false
+      current_user.save
+    end
     @checkin.save
     redirect_to :back, notice: "You've just checked out. Real nice champ!"
   end
