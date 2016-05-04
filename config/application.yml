@@ -1,6 +1,0 @@
-production:
-  AWS_S3_BUCKET_NAME: "xxxxxxxxxxxxxx"
-  AWS_ACCESS_KEY_ID: "yyyyyyyyyyyyyyyyyyyyyy"
-  AWS_SECRET_ACCESS_KEY: "zzzzzzzzzzzzzzzzzzzzzzzzz"
-
-
