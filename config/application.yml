@@ -1,6 +1,6 @@
 production:
-  AWS_S3_BUCKET_NAME: "okeassetbkt"
-  AWS_ACCESS_KEY_ID: "AKIAIGACPCFRCJ3QE6BQ"
-  AWS_SECRET_ACCESS_KEY: "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"
+  AWS_S3_BUCKET_NAME: "wtf?"
+  AWS_ACCESS_KEY_ID: "ThisShit'sInMyGitIgnoreFile!!"
+  AWS_SECRET_ACCESS_KEY: "ThisIsSomeBullshit...had2DeleteMyShyte!!"
 
 
