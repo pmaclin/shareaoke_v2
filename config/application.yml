@@ -1,6 +1,6 @@
 production:
-  AWS_S3_BUCKET_NAME: "wtf?...another_one"
-  AWS_ACCESS_KEY_ID: "ThisShit'sInMyGitIgnoreFile!!"
-  AWS_SECRET_ACCESS_KEY: "ThisIsSomeBullshit...had2DeleteMyShyte!!"
+  AWS_S3_BUCKET_NAME: "xxxxxxxxxxxxxx"
+  AWS_ACCESS_KEY_ID: "yyyyyyyyyyyyyyyyyyyyyy"
+  AWS_SECRET_ACCESS_KEY: "zzzzzzzzzzzzzzzzzzzzzzzzz"
 
 
