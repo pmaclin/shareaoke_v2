@@ -20,6 +20,12 @@
 /.env
 
 # Ignore application configuration
-/config/*application.yml
+config/application.yml
+
+# Ignore secrets configuration
+config/secrets.yml
+
+# Ignore database configuration
+config/database.yml
 
 
