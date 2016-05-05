@@ -10,6 +10,8 @@ Devise.setup do |config|
   # config.secret_key = 'a8c38c4e29903868abc2e392529455a64cb35195d8aed700e5ea5a3e33a5f8ff7e51dcb9c4f4634d981f3a255c2a75795ad77d281b2ae39affdbb523dc6d3b84'
   # New Key - Arbitrary Change...
   # config.secret_key = '17bd7901e36a5642303dddfb8ab188ab8e8008f5d03a0f24ff8ed9a20cd4b9ec3c0551bd73525253667f0de7c7729b69cb460b4c250c690916d36e2794c62780'
+  # From Heroku Logs
+  config.secret_key = 'b99a8f011b58e8f2817ec50ede3d5bf2329c87071d3131e5d6396b55e13c357edb6e318f1c4729802d8239e011fc12924c369064be3f7cc5828665afc8890207'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
